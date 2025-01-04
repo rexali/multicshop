@@ -3,11 +3,9 @@
 import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import ProductCard from "./ProductCard";
-import { getProductsAPI } from './api/getProductsAPI';
 
 export default function RecommendedProductList(props: any) {
 
-    // let products = await getProductsAPI();
     let products = props?.products ?? [];
 
 
