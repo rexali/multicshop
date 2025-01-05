@@ -1,8 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: false,
+    // reactStrictMode: false,
+    reactStrictMode: true,
+    async rewrites() {
+        return [
+            {
+                source: '/:path*',
+                destination: '/:path*',
+            },
+            {
+                source: '/',
+                destination: '/api/tenant',
+            },
+        ]
+    },
     images: {
-
         remotePatterns: [
             {
                 protocol: 'https',
