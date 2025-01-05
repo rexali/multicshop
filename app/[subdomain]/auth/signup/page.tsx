@@ -31,17 +31,17 @@ export default function SignUp() {
     const [subdomain, setSubDomain] = React.useState('');
     const [name, setName] = React.useState('');
 
-
     const router =useRouter();
 
     const handleSubmit = async (event: any) => {
         setLoading('Sending data..');
         handleSignUpSubmit(event, setError, setSuccess, setLoading, router)
     };
+
     const handleSetNameAndSubDomain=(event:any)=>{
         const {name, value} = event.target;
         setName(value)
-        setSubDomain(value.trim().toLowerCase());
+        setSubDomain(value.trim().toLowerCase().split(' ').join(''));
     }
 
     return (
