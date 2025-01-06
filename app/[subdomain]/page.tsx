@@ -1,10 +1,12 @@
+import * as React from "react";
 import { notFound } from 'next/navigation';
-import TenantModel  from '../lib/model.tenant';
+import TenantModel from '../lib/model.tenant';
+import AppPage from "../page";
 
-export default async function SubdomainPage({ params }: { params: Promise<{ subdomain: string }>}) {
+async function SubdomainPage({ params }: { params: Promise<{ subdomain: string }> }) {
   const { subdomain } = await params
   console.log('SubdomainPage: Rendering page for subdomain:', subdomain)
-  
+
   try {
     const tenant = await TenantModel.findOne({ subdomain })
     console.log('SubdomainPage: Tenant retrieved:', tenant)
@@ -13,14 +15,18 @@ export default async function SubdomainPage({ params }: { params: Promise<{ subd
       console.log('SubdomainPage: Tenant not found, redirecting to 404')
       notFound()
     }
-    
+
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen py-2">
-        <h1 className="text-4xl font-bold">Welcome to {tenant.name}</h1>
-        <p>This is a multitenant site for {subdomain}</p>
-        <pre>{JSON.stringify(tenant, null, 2)}</pre>
-      </div>
+      <React.Fragment>
+        <AppPage/>
+        <div className="flex flex-col items-center justify-center min-h-screen py-2">
+          <h1 className="text-4xl font-bold">Welcome to {tenant.name}</h1>
+          <p>This is a multitenant site for {subdomain}</p>
+          <pre>{JSON.stringify(tenant, null, 2)}</pre>
+        </div>
+      </React.Fragment>
     )
+
   } catch (error) {
     console.error('SubdomainPage: Error fetching tenant:', error)
     return (
@@ -32,3 +38,6 @@ export default async function SubdomainPage({ params }: { params: Promise<{ subd
     )
   }
 }
+
+
+export default SubdomainPage;
