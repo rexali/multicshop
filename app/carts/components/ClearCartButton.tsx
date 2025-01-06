@@ -14,7 +14,7 @@ export default function ClearCartButton(props: any) {
 
     return (
         <Box>
-            <Toaster />
+            {/* <Toaster /> */}
         <Button
             type="submit"
             size="large"
@@ -25,9 +25,9 @@ export default function ClearCartButton(props: any) {
                 try {
                     if (await clearUserCartsAPI(userId)) {
                         props.refreshCart();
-                        toast.success('Cart Cleared');
+                        // toast.success('Cart Cleared');
                     } else {
-                        toast.error('Clear Cart failed');
+                        // toast.error('Clear Cart failed');
                     }    
                 } catch (error) {
                     console.warn(error);  

@@ -73,7 +73,6 @@ export default function ProductsPage() {
           pageRangeDisplayed={5}
           onchangeCallback={(v: any) => setActivePage(v)} />
       </Box>
-      <Toaster />
     </Container>
   )
 }
