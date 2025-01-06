@@ -1,3 +1,4 @@
+import { toast } from "sonner";
 import { createFavouriteAPI } from "../api/createFavouriteAPI";
 import { deleteFavouriteAPI } from "../api/deleteFavouriteAPI";
 import { isAlReadyAddedToFavouriteByUserAPI } from "../api/isAlreadyAddedToFavouriteByUserAPI";
@@ -6,7 +7,8 @@ export async function addToWishListOrRemove(userId: string, productId: string, s
 
     if (await isAlReadyAddedToFavouriteByUserAPI(userId, productId)) {
         if (await deleteFavouriteAPI(productId, userId)) {
-            alert('Remove successfully')
+            // alert('Remove successfully');
+            toast.success('Remove successfully');
         }
     } else { 
         let favourite = await createFavouriteAPI({
@@ -14,8 +16,8 @@ export async function addToWishListOrRemove(userId: string, productId: string, s
             user_id: userId
         });
         if (favourite._id) {
-            statusCallback();
-            // alert('Added successfully');
+            toast.success('Added successfully');
+            // statusCallback();
         }
     }
 }

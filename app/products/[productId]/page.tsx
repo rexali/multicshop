@@ -17,6 +17,7 @@ import Rating from '@mui/material/Rating';
 import RecommendedProducts from '../RecommendedProducts';
 import CardImage from '../components/CardImage';
 import { ProductDetailsVideo } from '../components/ProductDetailsVideo';
+import { Toaster } from 'sonner';
 
 
 export const revalidate = 3600;
@@ -225,6 +226,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
           View all
         </Link>
       </Box>
+      <Toaster/>
     </Box>
   );
 }

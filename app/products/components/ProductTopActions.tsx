@@ -65,7 +65,7 @@ export default function ProductTopActions({ product, role, refreshProducts }: { 
             </Button>
             {open && <StatusModal message={{
                 title: "Favourite Alert",
-                body: "Product added to wish list"
+                body: "Added to wish list"
             }} closeCallback={handleOpen} />}
         </CardActions>
     )

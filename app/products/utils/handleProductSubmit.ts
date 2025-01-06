@@ -1,7 +1,7 @@
 import Form from 'form-data'
 import { createProductAPI } from "../api/createProductAPI";
 
-const handleProductSubmit = async (event: any, setPostSuccess: any, setPostError: any, setLoading: any, userId: string) => {
+const handleProductSubmit = async (event: any, setPostSuccess: any, setPostError: any, setLoading: any, userId: string, subdomain:any) => {
     event.preventDefault();
     try {
         const {
@@ -39,6 +39,8 @@ const handleProductSubmit = async (event: any, setPostSuccess: any, setPostError
         formData.append('product_code', product_code.value);
         formData.append('product_demos_links', product_demos_links.value);
         formData.append('user', userId);
+        formData.append('subdomain', subdomain);
+
 
         await createProductAPI(formData, setPostSuccess, setPostError, setLoading);
 

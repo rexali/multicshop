@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import { clearUserCartsAPI } from "../api/clearCartsAPI";
 import { useAuth } from "../../../hooks/use-auth";
 import { getToken } from "../../../utils/getToken";
+import Box from "@mui/material/Box";
 
 export default function ClearCartButton(props: any) {
 
@@ -12,6 +13,8 @@ export default function ClearCartButton(props: any) {
     const userId = auth.user?._id || getToken('_id') as string;
 
     return (
+        <Box>
+            <Toaster />
         <Button
             type="submit"
             size="large"
@@ -22,8 +25,9 @@ export default function ClearCartButton(props: any) {
                 try {
                     if (await clearUserCartsAPI(userId)) {
                         props.refreshCart();
+                        toast.success('Cart Cleared');
                     } else {
-                        alert('Clear Cart failed');
+                        toast.error('Clear Cart failed');
                     }    
                 } catch (error) {
                     console.warn(error);  
@@ -35,5 +39,6 @@ export default function ClearCartButton(props: any) {
         >
             Clear Cart
         </Button>
+        </Box>
     )
 }

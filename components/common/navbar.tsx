@@ -103,7 +103,6 @@ function NavBar(props: any) {
           <Toolbar disableGutters>
             {!isMobile && <AWFLogo />}
             <Link
-              type='button'
               href={'/'}
               style={{
                 display: isMobile ? "none" : '',
@@ -162,7 +161,6 @@ function NavBar(props: any) {
               </Menu>
             </Box>
             <Link
-              type='button'
               href={'/'}
               style={{
                 textDecoration: "none",
@@ -170,7 +168,7 @@ function NavBar(props: any) {
                 display: isMobile ? 'flex' : 'none',    ///{ xs: 'flex', md: 'none' },
                 flexGrow: 1,
                 fontFamily: 'monospace',
-                fontWeight: 400,
+                fontWeight: 700,
                 letterSpacing: '.1rem',
                 color: 'inherit',
               }}>

@@ -21,6 +21,7 @@ const clearUserCartsAPI = async (userId: string) => {
         return false;
     } catch (error) {
         console.warn(error);
+        return false;
     }
 };
 

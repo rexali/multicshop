@@ -10,13 +10,11 @@ export default function FAQHowItWorks() {
 
     return (
         <Container component="main" maxWidth="lg" sx={{ mt: 10 }} >
-            <Typography component={"h2"} sx={{ fontWeight: "bold", mb: 2, textAlign: "center" }}>
-                Frequently Asked Questions(F. A. Q.)
-            </Typography>
-            <Box textAlign={"center"} sx={{ mt: 5 }}>
+            <h2 style={{ marginBottom: 4 }}>Frequently Asked Questions</h2>
+            <Box sx={{ mt: 5 }}>
                 <Grid container rowSpacing={1} columnSpacing={4}>
                     <Grid item xs={12} md={6}>
-                        <Typography sx={{ fontWeight: "bold" }}>
+                        <Typography component={'h2'} sx={{ fontWeight: "bold" }}>
                             What is Cshop?
                         </Typography> <br /><br />
                         <Typography component={"p"}>
@@ -24,7 +22,7 @@ export default function FAQHowItWorks() {
                         </Typography><br /><br />
                     </Grid>
                     <Grid item xs={12} md={6} columnSpacing={4}>
-                        <Typography component={"h1"} sx={{ fontWeight: "bold" }}>
+                        <Typography component={'h2'} sx={{ fontWeight: "bold" }}>
                             How Cshop Works
                         </Typography><br /><br />
                         <Typography component={"p"}>

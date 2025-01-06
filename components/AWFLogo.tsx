@@ -13,7 +13,7 @@ function AWFLogo() {
                 alt="AWF"
                 style={{
                     borderRadius: 40,
-                    marginRight: 10
+                    marginRight: 5
                 }} />
         </Link>
     );

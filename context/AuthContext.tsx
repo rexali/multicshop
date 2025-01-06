@@ -15,7 +15,8 @@ const initialState = {
         email: "",
         _id: "",
         role: "user",
-        photo: ""
+        photo: "",
+        lastName:""
     },
 };
 

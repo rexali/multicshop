@@ -20,11 +20,12 @@ export default function AddProduct() {
 
     const auth = useAuth();
     const userId = auth.user?._id || getToken('_id') as string;
+    const subdomain = auth.user?.lastName ?? "";
 
     const handleSubmit = async (event: any) => {
         setLoading('Sending data..');
         try {
-            await handleProductSubmit(event, setSuccess, setError, setLoading, userId)
+            await handleProductSubmit(event, setSuccess, setError, setLoading, userId, subdomain)
         } catch (error) {
             console.warn(error);
         }

@@ -20,7 +20,8 @@ export function useAuth() {
         _id: "",
         email: "",
         role: "",
-        photo: ""
+        photo: "",
+        lastName:""
     });
     // declare and assign loading state
     const [loading, setLoading] = useState(true);

@@ -26,6 +26,8 @@ import { SERVER_URL } from '../constants/url';
 import HomeFallback from '../components/common/HomeFallback';
 import Fallback from '../components/common/fallback';
 import { fetchInitialDataAPI } from './api/fetchInitialDataAPI';
+import { Grid } from '@mui/material';
+import { Toaster } from 'sonner';
 
 export default function AppPage() {
   const isMobile = useMediaQuery({ maxDeviceWidth: 1023 });
@@ -102,14 +104,27 @@ export default function AppPage() {
             </Box>
           </Box>
         </Box>
-        <Testimonials />
-        <Portfolios />
-        <Team />
-        <Partners />
+        <Box>
+          <Grid container rowSpacing={1} columnSpacing={4}>
+            <Grid item xs={12} sm={12} md={6} lg={6}>
+              <Testimonials />
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={6}>
+              <Portfolios />
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={6}>
+              <Team />
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={6}>
+              <Partners />
+            </Grid>
+          </Grid>
+        </Box>
         <FAQHowItWorks />
         <CreateSubscription />
         <Copyright sx={{ mt: 4, mb: 4 }} />
       </Container>
+      <Toaster />
     </ErrorBoundary>
   );
 }

@@ -2,7 +2,7 @@ import { createReviewAPI } from "../api/createReviewAPI";
 import { isBoughtByUserAPI } from "../api/isBoughtByUserAPI";
 import { goToSavedLinkpath } from "../../../utils/goToSavedLinkPath";
 
-const handleReviewSubmit = async (event: any, setPostSuccess: any, setPostError: any, setLoading:any) => {
+const handleReviewSubmit = async (event: any, setPostSuccess: any, setPostError: any, setLoading:any, toast:any) => {
     event.preventDefault();
     
     const {
@@ -24,7 +24,8 @@ const handleReviewSubmit = async (event: any, setPostSuccess: any, setPostError:
             setLoading('Sending data.. ')
             await createReviewAPI(reviewData, setPostSuccess, setPostError, setLoading);
         } else {
-            alert(`\n\n\n\n Buy this product first, and post a review thereafter`)
+            toast.info(`Buy this product first, and post a review thereafter`);
+            // alert(`\n\n\n\n Buy this product first, and post a review thereafter`)
         }
     } else {
         window.location.assign('/auth/signin?next='+goToSavedLinkpath());

@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { handleReviewSubmit } from './utils/handleReviewSubmit';
+import { toast,Toaster } from 'sonner';
 
 
 export default function ReviewForm(props: any) {
@@ -15,7 +16,7 @@ export default function ReviewForm(props: any) {
     return (
         <Box
             component="form"
-            onSubmit={async (evt) => await handleReviewSubmit(evt, setSuccess, setError, setLoading)}
+            onSubmit={async (evt) => await handleReviewSubmit(evt, setSuccess, setError, setLoading, toast)} 
             noValidate={false}
             sx={{ mt: 1 }}
         >
@@ -54,6 +55,7 @@ export default function ReviewForm(props: any) {
             {success && <Box textAlign={"center"} sx={{ color: "green" }}>{success.toUpperCase()}</Box>}
             {error && <Box textAlign={"center"} sx={{ color: "red" }}>{error.toUpperCase()}</Box>}
             {loading && <Box textAlign={"center"} sx={{ color: "green" }}>{error.toUpperCase()}</Box>}
+            <Toaster />
 
             <Button
                 type="submit"

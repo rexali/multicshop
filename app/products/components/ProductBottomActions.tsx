@@ -19,9 +19,10 @@ import { getToken } from "../../../utils/getToken";
 import GetQouteModal from "../../../app/qoutes/components/GetQuoteModal";
 import { goToSavedLinkpath } from "../../../utils/goToSavedLinkPath";
 import { CardActions } from "@mui/material";
+import { toast } from "sonner";
 
 
-export default function ProductBottomActions({ product, role, refreshProducts }: { product: any, role?: string, refreshProducts?:any }) {
+export default function ProductBottomActions({ product, role, refreshProducts }: { product: any, role?: string, refreshProducts?: any }) {
     const [open, setOpen] = useState(false);
     const [openQoute, setOpenQoute] = useState(false);
     const [quantity, setQuantity] = useState<number>(1);
@@ -56,12 +57,12 @@ export default function ProductBottomActions({ product, role, refreshProducts }:
     return (
         <Box>
             <CardActions sx={{ display: 'flex', flexDirection: 'row', justifyContent: "space-between" }}>
-                <Box><span onClick={(evt) => minusToCartCount(evt)}><Minus sx={{ mr: 1, fontSize:14 }} /></span><input disabled={true} style={{ width: 15,fontSize:11, textAlign: 'center', borderRadius: 8 }} value={quantity} /><span onClick={(evt) => plusToCartCount(evt)}><Plus sx={{ ml: 1,fontSize:14 }} /></span></Box>
+                <Box><span onClick={(evt) => minusToCartCount(evt)}><Minus sx={{ mr: 1, fontSize: 14 }} /></span><input disabled={true} style={{ width: 15, fontSize: 11, textAlign: 'center', borderRadius: 8 }} value={quantity} /><span onClick={(evt) => plusToCartCount(evt)}><Plus sx={{ ml: 1, fontSize: 14 }} /></span></Box>
                 {
                     (role === 'admin') && <Button
                         size="small"
                         onClick={() => { router.push(`/products/${product._id}/edit`) }}
-                        startIcon={<Edit sx={{fontSize: 11}} />}></Button>
+                        startIcon={<Edit sx={{ fontSize: 11 }} />}></Button>
                 }
                 <Button
                     size="small"
@@ -84,11 +85,12 @@ export default function ProductBottomActions({ product, role, refreshProducts }:
                                 // refreshProducts();
 
                             } else {
-                                alert('\n\n\n\n Already added');
+                                // alert('\n\n\n\n Already added');
+                                toast.success('Already added to cart');
                             }
 
                         } else {
-                             router.push('/auth/signin?next=' + goToSavedLinkpath(''));
+                            router.push('/auth/signin?next=' + goToSavedLinkpath(''));
                         }
 
                     }}
