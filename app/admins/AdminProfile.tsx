@@ -12,7 +12,7 @@ import { useAuth } from "../../hooks/use-auth";
 import { SERVER_URL } from "../../constants/url";
 import CardImage from "../products/components/CardImage";
 
-export default function AdminProfile() {
+export default function AdminProfile(props:any) {
   const [adminProfile, setUserProfile] = React.useState<any>({});
   const [error, setError] = React.useState('');
   const [success, setSuccess] = React.useState('');

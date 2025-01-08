@@ -3,7 +3,7 @@ import { Container } from "@mui/material";
 import React from "react";
 import { Chart } from "react-google-charts";
 
-export default function ReportPage() {
+export default function ReportPage(props:any) {
 
   const data = [
     ["Day", "Sales"],

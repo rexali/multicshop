@@ -4,7 +4,7 @@ import { Container } from "@mui/material";
 import React from "react";
 import { Chart } from "react-google-charts";
 
-export default function AnalyticsPage() {
+export default function AnalyticsPage(props:any) {
 
   const data = [
     ["Day", "Sales"],

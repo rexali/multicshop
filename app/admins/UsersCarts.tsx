@@ -9,7 +9,7 @@ import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody
 import Link from "next/link";
 import { useCarts } from "../checkout/hooks/useCarts";
 
-export default function UsersCarts() {
+export default function UsersCarts(props:any) {
   const [activePage, setActivePage] = React.useState<number>(1);
   const { dispatch } = React.useContext(AppContext);
   const { carts } = useCarts(dispatch, activePage);

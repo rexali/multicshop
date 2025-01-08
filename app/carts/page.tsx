@@ -11,7 +11,7 @@ import { getCarts } from "../../store/actions/app-actions";
 import CartList from "./CartList";
 import ErrorBoundary from "../../components/ErrorBoundary";
 
-export default function CartPage() {
+export default function CartPage(props:any) {
 
   const [activePage, setActivePage] = useState<number>(1);
   let [products, setProducts] = useState<any>([]);

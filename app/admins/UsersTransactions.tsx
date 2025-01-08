@@ -12,7 +12,7 @@ import { getUsersHistoryAPI } from './api/getUsersHistory';
 import Container from '@mui/material/Container';
 import Link from 'next/link';
 
-export default function UsersTransactions() {
+export default function UsersTransactions(props:any) {
   const [data, setData] = React.useState<any>([]);
   const [activePage, setActivePage] = React.useState(1);
 

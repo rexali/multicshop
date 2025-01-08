@@ -25,7 +25,8 @@ import UsersSubscriptionsTable from "../subscriptions/UserSubscriptions";
 import AnalyticsPage from "./Analytics";
 
 export default function AdminPage(props: any) {
-    console.log('AdminPage: Rendering page for admin: ' + props.subdomain);
+    
+    const subdomain = props.subdomain ?? ""
 
     const searchParams = useSearchParams();
 
@@ -77,20 +78,20 @@ export default function AdminPage(props: any) {
 
                 <div className="tab-content">
                     <div className="tab-pane active" id={tabName}>
-                        {tabName === 'admin' ? <AdminProfileTab /> : ''}
-                        {tabName === 'profiles' ? <ProfileTab /> : ''}
-                        {tabName === 'qoutes' ? <QoutesTab /> : ''}
-                        {tabName === 'products' ? <ProductsTab /> : ''}
-                        {tabName === 'messages' ? <MessagesTab /> : ''}
-                        {tabName === 'notifications' ? <NotificationTab /> : ''}
-                        {tabName === 'transactions' ? <TransactionTab /> : ''}
-                        {tabName === 'carts' ? <CartTab /> : ''}
-                        {tabName === 'orders' ? <OrderTab /> : ''}
-                        {tabName === 'subscriptions' ? <SubscriptionsTab /> : ''}
-                        {tabName === 'sell' ? <SellTab /> : ''}
-                        {tabName === 'yourcart' ? <YourCartTab /> : ''}
-                        {tabName === 'report' ? <ReportTab /> : ''}
-                        {tabName === 'analytics' ? <AnalyticsTab /> : ''}
+                        {tabName === 'admin' ? <AdminProfileTab subdomain={subdomain}/> : ''}
+                        {tabName === 'profiles' ? <ProfileTab subdomain={subdomain} /> : ''}
+                        {tabName === 'qoutes' ? <QoutesTab subdomain={subdomain}/> : ''}
+                        {tabName === 'products' ? <ProductsTab subdomain={subdomain} /> : ''}
+                        {tabName === 'messages' ? <MessagesTab subdomain={subdomain}/> : ''}
+                        {tabName === 'notifications' ? <NotificationTab subdomain={subdomain}/> : ''}
+                        {tabName === 'transactions' ? <TransactionTab subdomain={subdomain}/> : ''}
+                        {tabName === 'carts' ? <CartTab subdomain={subdomain}/> : ''}
+                        {tabName === 'orders' ? <OrderTab subdomain={subdomain}/> : ''}
+                        {tabName === 'subscriptions' ? <SubscriptionsTab subdomain={subdomain} /> : ''}
+                        {tabName === 'sell' ? <SellTab subdomain={subdomain}/> : ''}
+                        {tabName === 'yourcart' ? <YourCartTab subdomain={subdomain} /> : ''}
+                        {tabName === 'report' ? <ReportTab subdomain={subdomain} /> : ''}
+                        {tabName === 'analytics' ? <AnalyticsTab subdomain={subdomain}/> : ''}
 
                     </div>
                 </div>
@@ -101,8 +102,7 @@ export default function AdminPage(props: any) {
 
 
 
-function ReportTab() {
-
+function ReportTab(props:any) {
     return (
         <Box>
             <Box component={'div'} textAlign={'left'} >
@@ -115,12 +115,12 @@ function ReportTab() {
 
             <div>Coming soon</div>
 
-            <ReportPage />
+            <ReportPage subdomain={props.subdomain} />
         </Box>
     )
 }
 
-function AnalyticsTab() {
+function AnalyticsTab(props:any) {
 
     return (
         <Box>
@@ -134,12 +134,12 @@ function AnalyticsTab() {
 
             <div>Coming soon</div>
 
-            <AnalyticsPage />
+            <AnalyticsPage subdomain={props.subdomain} />
         </Box>
     )
 }
 
-function SellTab() {
+function SellTab(props:any) {
 
     return (
         <Box>
@@ -151,13 +151,13 @@ function SellTab() {
                 </Typography>
             </Box>
 
-            <SellProducts />
+            <SellProducts subdomain={props.subdomain} />
         </Box>
     )
 }
 
 
-function YourCartTab() {
+function YourCartTab(props:any) {
 
     return (
         <Box>
@@ -168,13 +168,13 @@ function YourCartTab() {
                     My cart
                 </Typography>
             </Box>
-            <CartPage />
+            <CartPage subdomain={props.subdomain} />
         </Box>
     )
 }
 
 
-function ProductsTab() {
+function ProductsTab(props:any) {
 
     return (
 
@@ -190,12 +190,12 @@ function ProductsTab() {
                 <Link href={"/products/add"}><Button startIcon={<Add />}> Add product</Button></Link>
             </Box>
 
-            <UsersProducts />
+            <UsersProducts subdomain={props.subdomain} />
         </Box>
     )
 }
 
-function ProfileTab() {
+function ProfileTab(props:any) {
 
     return (
         <Box>
@@ -206,12 +206,12 @@ function ProfileTab() {
                     Profiles
                 </Typography>
             </Box>
-            <UsersProfiles />
+            <UsersProfiles subdomain={props.subdomain}/>
         </Box>
     )
 }
 
-function QoutesTab() {
+function QoutesTab(props:any) {
 
     return (
         <Container>
@@ -222,13 +222,13 @@ function QoutesTab() {
                     Quotes
                 </Typography>
             </Box>
-            <UsersQoutes />
+            <UsersQoutes subdomain={props.subdomain} />
         </Container>
     )
 }
 
 
-function SubscriptionsTab() {
+function SubscriptionsTab(props:any) {
 
     return (
         <Container>
@@ -239,12 +239,12 @@ function SubscriptionsTab() {
                     Subscribers
                 </Typography>
             </Box>
-            <UsersSubscriptionsTable />
+            <UsersSubscriptionsTable  subdomain={props.subdomain}/>
         </Container>
     )
 }
 
-function AdminProfileTab() {
+function AdminProfileTab(props:any) {
 
     return (
         <Container >
@@ -255,37 +255,37 @@ function AdminProfileTab() {
                     My profile
                 </Typography>
             </Box>
-            <AdminProfile />
+            <AdminProfile subdomain={props.subdomain} />
         </Container>
     )
 }
 
-function MessagesTab() {
+function MessagesTab(props:any) {
     return (
         <Container>
             <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                 Messages<Link href={"/messages/add"}><Button startIcon={<Add />}>Send message</Button></Link>
             </Box>
-            <UsersMessages />
+            <UsersMessages subdomain={props.subdomain} />
         </Container>
 
     )
 }
 
 
-function NotificationTab() {
+function NotificationTab(props:any) {
     return (
         <Container >
             <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                 Notifications <Link href={"/notifications/add"}><Button startIcon={<Add />}>Send notice</Button></Link>
             </Box>
-            <UsersNotifications />
+            <UsersNotifications subdomain={props.subdomain} />
         </Container>
 
     )
 }
 
-function TransactionTab() {
+function TransactionTab(props:any) {
 
     return (
         <Container >
@@ -297,13 +297,13 @@ function TransactionTab() {
                 </Typography>
             </Box>
 
-            <UsersTransactions />
+            <UsersTransactions subdomain={props.subdomain} />
         </Container>
     )
 }
 
 
-function CartTab() {
+function CartTab(props:any) {
 
     return (
         <Box>
@@ -314,12 +314,12 @@ function CartTab() {
                     Carts
                 </Typography>
             </Box>
-            <UsersCarts />
+            <UsersCarts subdomain={props.subdomain}/>
         </Box>
     )
 }
 
-function OrderTab() {
+function OrderTab(props:any) {
 
     return (
         <Container >
@@ -330,7 +330,7 @@ function OrderTab() {
                     Orders
                 </Typography>
             </Box>
-            <UsersOrders />
+            <UsersOrders subdomain={props.subdomain}/>
         </Container>
     )
 }

@@ -11,7 +11,7 @@ import { approveProductAPI } from "./api/approveProductAPI";
 import { featureProductAPI } from "./api/featureProductAPI";
 
 
-export default function UsersProducts() {
+export default function UsersProducts(props:any) {
   const [data, setData] = React.useState<any>([]);
   const [activePage, setActivePage] = React.useState(1);
 

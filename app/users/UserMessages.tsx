@@ -9,7 +9,7 @@ import ReactPagination from "../../components/react-pagination";
 import { getToken } from "../../utils/getToken";
 import { useAuth } from "../../hooks/use-auth";
 
-export default function UserMessages() {
+export default function UserMessages(props:any) {
   const [activePage, setActivePage] = React.useState(1);
   const { state, dispatch } = React.useContext(AuthContext);
   

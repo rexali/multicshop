@@ -9,7 +9,7 @@ import Box from "@mui/material/Box";
 import ReactPagination from "../../components/react-pagination";
 import { useAuth } from "../../hooks/use-auth";
 
-export default function UserFavourites() {
+export default function UserFavourites(props:any) {
   const [data, setData] = React.useState<any>([]);
   const [activePage, setActivePage] = React.useState(1);
 

@@ -13,7 +13,7 @@ import Container from '@mui/material/Container';
 import Link from 'next/link';
 
 
-export default function UsersProfiles() {
+export default function UsersProfiles(props:any) {
   const [data, setData] = React.useState<any>([]);
   const [activePage, setActivePage] = React.useState(1);
 

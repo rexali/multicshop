@@ -1,8 +1,7 @@
 "use client"
 
-import React, { useCallback, useContext, useEffect, useState, useRef } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import Link from "next/link";
-import ProtectedRoute from "../../components/protected-route";
 import { Box, Typography, Button } from "@mui/material";
 import UserFavourites from "./UserFavourites";
 import UserMessages from "./UserMessages";
@@ -26,14 +25,15 @@ import { useSearchParams } from "next/navigation";
 import ErrorBoundary from "../../components/ErrorBoundary";
 import ProtectedUserRoute from "../../components/ProtectedUserRoute";
 
-export default function UsersPage(props:any) {
-    console.log('UsersPage: Rendering page for user: '+props.subdomain);
+export default function UsersPage(props: any) {
+
+    const subdomain = props.subdomain ?? "";
     const searchParams = useSearchParams();
 
     const getTabId = () => {
         if (typeof window !== 'undefined') {
             return window.sessionStorage.getItem('tabId');
-        }else{
+        } else {
             console.log('Window is undefined');
         }
     }
@@ -87,15 +87,15 @@ export default function UsersPage(props:any) {
 
                     <div className="tab-content">
                         <div className="tab-pane container active" id="profile">
-                            {tabName === 'profile' ? <ProfileTab user={user} /> : ''}
-                            {tabName === 'products' ? <ProductsTab /> : ''}
-                            {tabName === 'messages' ? <MessagesTab /> : ''}
-                            {tabName === 'notifications' ? <NotificationsTab /> : ''}
-                            {tabName === 'favourites' ? <FavouritesTab /> : ''}
-                            {tabName === 'cart' ? <CartTab cart={cart} /> : ''}
-                            {tabName === 'orders' ? <OrderTab /> : ''}
-                            {tabName === 'transactions' ? <TransactionTab /> : ''}
-                            {tabName === 'settings' ? <SettingsTab /> : ''}
+                            {tabName === 'profile' ? <ProfileTab user={user} subdomain={subdomain} /> : ''}
+                            {tabName === 'products' ? <ProductsTab subdomain={subdomain}/> : ''}
+                            {tabName === 'messages' ? <MessagesTab subdomain={subdomain}/> : ''}
+                            {tabName === 'notifications' ? <NotificationsTab subdomain={subdomain} /> : ''}
+                            {tabName === 'favourites' ? <FavouritesTab subdomain={subdomain}/> : ''}
+                            {tabName === 'cart' ? <CartTab cart={cart} subdomain={subdomain} /> : ''}
+                            {tabName === 'orders' ? <OrderTab subdomain={subdomain}/> : ''}
+                            {tabName === 'transactions' ? <TransactionTab  subdomain={subdomain}/> : ''}
+                            {tabName === 'settings' ? <SettingsTab subdomain={subdomain}/> : ''}
                         </div>
                     </div>
                 </div>
@@ -110,7 +110,7 @@ const styles = {
     marginTop: { marginTop: 60, maginBottom: 30 }
 }
 
-function ProductsTab() {
+function ProductsTab(props: any) {
 
     return (
 
@@ -118,12 +118,12 @@ function ProductsTab() {
             <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                 Your products <Link href={"/products/add"}><Button startIcon={<Add />}>Add product</Button></Link>
             </Box>
-            <UserProducts />
+            <UserProducts subdomain={props.subdomain}/>
         </Box>
     )
 }
 
-function SettingsTab() {
+function SettingsTab(props: any) {
 
     return (
 
@@ -147,12 +147,12 @@ function ProfileTab(props: any) {
                     My profile
                 </Typography>
             </Box>
-            <UserProfile user={props?.user} />
+            <UserProfile user={props?.user} subdomain={props.subdomain} />
         </Box>
     )
 }
 
-function MessagesTab() {
+function MessagesTab(props: any) {
     return (
         <Box>
             <Box component={'div'} textAlign={'left'} >
@@ -162,13 +162,13 @@ function MessagesTab() {
                     Message(s)
                 </Typography>
             </Box>
-            <UserMessages />
+            <UserMessages subdomain={props.subdomain}/>
         </Box>
 
     )
 }
 
-function NotificationsTab() {
+function NotificationsTab(props: any) {
     return (
         <Box>
             <Box component={'div'} textAlign={'left'} >
@@ -178,13 +178,13 @@ function NotificationsTab() {
                     Notification(s)
                 </Typography>
             </Box>
-            <UsersNotifications />
+            <UsersNotifications  subdomain={props.subdomain}/>
         </Box>
 
     )
 }
 
-function FavouritesTab() {
+function FavouritesTab(props: any) {
 
     return (
         <Box>
@@ -195,7 +195,7 @@ function FavouritesTab() {
                     My favourite(s)
                 </Typography>
             </Box>
-            <UserFavourites />
+            <UserFavourites subdomain={props.subdomain} />
         </Box>
     )
 }
@@ -213,12 +213,12 @@ function CartTab(props: any) {
                 </Typography>
             </Box>
 
-            <UserCart cart={props.cart} />
+            <UserCart cart={props.cart} subdomain={props.subdomain} />
         </Box>
     )
 }
 
-function OrderTab() {
+function OrderTab(props: any) {
 
     return (
         <Box>
@@ -231,13 +231,13 @@ function OrderTab() {
                 </Typography>
             </Box>
             {/* <UserOrders /> */}
-            <UserOrders />
+            <UserOrders subdomain={props.subdomain}/>
         </Box>
     )
 }
 
 
-function TransactionTab() {
+function TransactionTab(props: any) {
 
     return (
         <Box>
@@ -249,8 +249,8 @@ function TransactionTab() {
                     My transaction(s)
                 </Typography>
             </Box>
-            {/* <UserHistory /> */}
-            <UserTransactions />
+        
+            <UserTransactions subdomain={props.subdomain}/>
         </Box>
     )
 }

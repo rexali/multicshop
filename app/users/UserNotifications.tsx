@@ -8,7 +8,7 @@ import NotificationList from "../notifications/notification-list";
 import Fallback from "../../components/common/fallback";
 import { getUsersNotificationsAPI } from "../admins/api/getUsersNotifications";
 
-export default function UsersNotifications() {
+export default function UsersNotifications(props:any) {
     const [data, setData] = React.useState<any>([]);
     const [activePage, setActivePage] = React.useState(1);
     const handlePageChange = (pageNumber: any) => {

@@ -6,7 +6,7 @@ import { getSubscriptionsAPI } from "./api/getSubscriptionsAPI";
 import ReactPagination from "../../components/react-pagination";
 import Link from "next/link";
 
-export default function UsersSubscriptionsTable() {
+export default function UsersSubscriptionsTable(props:any) {
     const [data, setData] = useState<any>([]);
     const [activePage, setActivePage] = React.useState(1);
 

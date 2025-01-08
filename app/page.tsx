@@ -1,5 +1,6 @@
 'use client'
-import React, { useEffect } from 'react';
+
+import React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import MarketingMessage from './MarketingMessage';
 import FAQHowItWorks from './FAQHowItWorks';
@@ -28,9 +29,15 @@ import Fallback from '../components/common/fallback';
 import { fetchInitialDataAPI } from './api/fetchInitialDataAPI';
 import { Grid } from '@mui/material';
 import { Toaster } from 'sonner';
+import { useParams } from 'next/navigation';
 
 export default function AppPage() {
   const isMobile = useMediaQuery({ maxDeviceWidth: 1023 });
+  const { subdomain }: { subdomain: string } = useParams();
+
+  if (typeof window !== 'undefined') {
+    window.sessionStorage.setItem('subdomain', subdomain);
+  }
 
   const { data, isLoading, error } = useSWR(`${SERVER_URL}/products/${1}/initial`, fetchInitialDataAPI);
 

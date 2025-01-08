@@ -11,7 +11,7 @@ import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody
 import Link from "next/link";
 import { orderStatusAPI } from "../admins/api/orderStatusAPI";
 
-export default function UserOrders() {
+export default function UserOrders(props:any) {
   const [data, setData] = React.useState<any>([]);
   const [activePage, setActivePage] = React.useState(1);
 

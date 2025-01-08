@@ -15,7 +15,7 @@ import { Button } from '@mui/material';
 import { orderStatusAPI } from './api/orderStatusAPI';
 
 
-export default function UsersOrders() {
+export default function UsersOrders(props:any) {
   const [data, setData] = React.useState<any>([]);
   const [activePage, setActivePage] = React.useState(1);
 

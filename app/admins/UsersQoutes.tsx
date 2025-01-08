@@ -7,7 +7,7 @@ import { getQoutesAPI } from "../qoutes/api/getQoutesAPI";
 import QouteList from "../qoutes/QouteList";
 import ReactPagination from "../../components/react-pagination";
 
-export default function UsersQoutes() {
+export default function UsersQoutes(props:any) {
   const [data, setData] = React.useState<any>([]);
   const [activePage, setActivePage] = React.useState(1);
 

@@ -10,7 +10,7 @@ import { getUserHistoryAPI } from "../users/api/getUserHistory";
 import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody } from "@mui/material";
 import Link from "next/link";
 
-export default function UserHistory() {
+export default function UserHistory(props:any) {
     const [data, setData] = React.useState<any>([]);
     const [activePage, setActivePage] = React.useState(1);
     const auth = useAuth();

@@ -9,7 +9,7 @@ import { getToken } from "../../utils/getToken";
 import ReactPagination from "../../components/react-pagination";
 import { useAuth } from "../../hooks/use-auth";
 
-export default function UserProducts() {
+export default function UserProducts(props:any) {
   const [data, setData] = React.useState<any>([]);
   const [activePage, setActivePage] = React.useState(1);
 

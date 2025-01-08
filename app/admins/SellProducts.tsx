@@ -10,7 +10,7 @@ import Box from '@mui/material/Box';
 import SearchList from '../search/SearchList';
 import { instantSearchProductAPI } from '../search/api/instantSearchAPI';
 
-export default function SellProducts() {
+export default function SellProducts(props:any) {
     const [data, setData] = React.useState([]);
     const [term, setTerm] = React.useState();
 
