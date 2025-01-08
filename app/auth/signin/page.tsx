@@ -23,7 +23,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 
 const defaultTheme = createTheme();
 
-export default function SignIn() {
+export default function SignIn(props: any) {
 
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -35,7 +35,8 @@ export default function SignIn() {
   const handleSubmit = (event: any) => {
     // give user feedback
     setLoading("Sending data...");
-    handleLoginSubmit(event, setSuccess, setError, setLoading, router,next)
+    const subdomain = props?.subdomain ?? ""
+    handleLoginSubmit(event, setSuccess, setError, setLoading, router, next, subdomain)
   }
 
   return (
@@ -58,7 +59,7 @@ export default function SignIn() {
           </Typography>
           <Box component="form"
             onSubmit={handleSubmit}
-            noValidate ={false} 
+            noValidate={false}
             sx={{ mt: 1 }}>
             <TextField
               margin="normal"

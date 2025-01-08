@@ -1,7 +1,7 @@
 "use client"
 
-import SignIn from "@/app/auth/signin/page";
-import { useAuth } from "@/hooks/use-auth";
+import SignIn from "../app/auth/signin/page";
+import { useAuth } from "../hooks/use-auth";
 
 const ProtectedRoute = ({ children }: { children: any }) => {
 

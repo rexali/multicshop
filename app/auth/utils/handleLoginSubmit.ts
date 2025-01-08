@@ -14,7 +14,8 @@ export const handleLoginSubmit = (
     setLoginError: Function,
     setLoading: Function,
     router: any,
-    next:any
+    next:any,
+    subdomain?:any
 ) => {
     // prevent defaut behaviour
     event.preventDefault();
@@ -25,7 +26,7 @@ export const handleLoginSubmit = (
     // get password 
     const password = data.get("password");
     // handle login
-    logInAPI(email, password)
+    logInAPI(email, password, subdomain)
         .then((result: any) => {
             if (result.status === "success") {
                 setLoading('');

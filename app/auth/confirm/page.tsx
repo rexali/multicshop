@@ -15,7 +15,7 @@ import Fallback from "../../../components/common/fallback";
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function ConfirmRegistration() {
+export default function ConfirmRegistrationPage() {
   const [result, setResult] = useState<any>({})
   const email = useSearchParams().get('email');
   const rcode = useSearchParams().get('rcode');

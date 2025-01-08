@@ -18,31 +18,23 @@ import Copyright from '../../../../components/common/copyright';
 import { handleSignUpSubmit } from '../../../auth/utils/handleSignUpSubmit'; //'../../auth/utils/handleSignUpSubmit';
 import styles from "../../../auth/styles/auth.module.css";
 import { useState } from 'react';
-import {useRouter} from 'next/navigation'
-import { first } from 'lodash';
+import { useParams, useRouter } from 'next/navigation'
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function SignUp() {
+export default async function SubSignUpPage(props: any) {
+
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const [loading, setLoading] = React.useState('');
-    const [subdomain, setSubDomain] = React.useState('');
-    const [name, setName] = React.useState('');
-
-    const router =useRouter();
+    const router = useRouter();
+    const { subdomain } = useParams();
 
     const handleSubmit = async (event: any) => {
         setLoading('Sending data..');
-        handleSignUpSubmit(event, setError, setSuccess, setLoading, router)
+        handleSignUpSubmit(event, setError, setSuccess, setLoading, router, subdomain)
     };
-
-    const handleSetNameAndSubDomain=(event:any)=>{
-        const {name, value} = event.target;
-        setName(value)
-        setSubDomain(value.trim().toLowerCase().split(' ').join(''));
-    }
 
     return (
         <ThemeProvider theme={defaultTheme}>
@@ -62,37 +54,33 @@ export default function SignUp() {
                     <Typography component="h1" variant="h5">
                         Sign up
                     </Typography>
-                    <Box 
-                    component="form" 
-                    onSubmit={handleSubmit}
-                    noValidate={false} 
-                    sx={{ mt: 3 }}
+                    <Box
+                        component="form"
+                        onSubmit={handleSubmit}
+                        noValidate={false}
+                        sx={{ mt: 3 }}
                     >
                         <Grid container spacing={2}>
                             <Grid item xs={12} sm={6}>
                                 <TextField
-                                    autoComplete="given-name"
                                     name="first_name"
                                     fullWidth
                                     id="first_name"
-                                    label="Business Name"
+                                    label="First Name"
                                     type='text'
+                                    required
                                     autoFocus
-                                    onChange={handleSetNameAndSubDomain}
-                                    value={name}
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
                                     fullWidth
                                     id="last_name"
-                                    label="Subdomain"
+                                    label="Last Name"
                                     name="last_name"
                                     type='text'
-                                    autoComplete="family-name"
-                                    value={subdomain}
+                                    required
                                 />
-                                <TextField defaultValue={'.siniotech.com.ng'} disabled />
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField

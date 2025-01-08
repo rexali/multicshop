@@ -9,7 +9,7 @@ import { saveToken } from "../../../utils/saveToken";
  * @param password 
  * @returns boolean value
  */
-export async function logInAPI(email: any, password: any) {
+export async function logInAPI(email: any, password: any, subdomain?:string) {
     try {
         // fetch data with email and password
         const resp = await fetch(SERVER_URL + "/auth/login", {
@@ -22,7 +22,8 @@ export async function logInAPI(email: any, password: any) {
             // user entered data
             body: JSON.stringify({
                 email, 
-                password
+                password,
+                subdomain
             }), 
         });
         // get the token and result

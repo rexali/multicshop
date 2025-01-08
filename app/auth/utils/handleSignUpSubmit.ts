@@ -14,7 +14,8 @@ export const handleSignUpSubmit = (
     setSignUpError: any,
     setSignUpSuccess: any,
     setLoading: any,
-    router?: any
+    router?: any,
+    subdomain?: any
 ) => {
     // prevent default behaviour
     event.preventDefault();
@@ -28,7 +29,8 @@ export const handleSignUpSubmit = (
             last_name.value,
             email.value,
             password.value,
-            remember_me.value
+            remember_me.value,
+            subdomain
         ).then(((result) => {
             if (result.status === "success") {
                 // send success message

@@ -26,9 +26,18 @@ import { useSearchParams } from "next/navigation";
 import ErrorBoundary from "../../components/ErrorBoundary";
 import ProtectedUserRoute from "../../components/ProtectedUserRoute";
 
-export default function UserTabs() {
+export default function UsersPage(props:any) {
+    console.log('UsersPage: Rendering page for user: '+props.subdomain);
     const searchParams = useSearchParams();
-    const tabId = searchParams.get('tabId') || window.sessionStorage.getItem('tabId');
+
+    const getTabId = () => {
+        if (typeof window !== 'undefined') {
+            return window.sessionStorage.getItem('tabId');
+        }else{
+            console.log('Window is undefined');
+        }
+    }
+    const tabId = searchParams.get('tabId') || getTabId();
     let [tabName, setTabName] = useState(tabId ?? 'profile');
     const [cart, setCart] = useState<any>([]);
 

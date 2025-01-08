@@ -16,7 +16,7 @@ import Fallback from '../../../components/common/fallback';
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function ChangePassword() {
+export default function ChangePasswordPage() {
   const rcode = useSearchParams().get('rcode') as string;
   const email = useSearchParams().get('email') as string;
   const [error, setError] = React.useState('');

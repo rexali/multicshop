@@ -15,7 +15,7 @@ import { useState } from 'react';
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function ForgetPassword() {
+export default function ForgetPasswordPage() {
 
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');

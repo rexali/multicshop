@@ -14,7 +14,6 @@ import Add from "@material-ui/icons/Add";
 import UsersNotifications from "./UsersNotifications";
 import AdminProfile from "./AdminProfile";
 import UsersQoutes from "./UsersQoutes";
-// import UsersSubscriptions from "./UsersSubscriptions";
 import { useSearchParams } from "next/navigation";
 import UsersCarts from "./UsersCarts";
 import ProtectedAdminRoute from "../../components/ProtectedAdminRoute";
@@ -25,9 +24,19 @@ import ReportPage from "./Report";
 import UsersSubscriptionsTable from "../subscriptions/UserSubscriptions";
 import AnalyticsPage from "./Analytics";
 
-export default function UserTabs() {
+export default function AdminPage(props: any) {
+    console.log('AdminPage: Rendering page for admin: ' + props.subdomain);
+
     const searchParams = useSearchParams();
-    const tabId = searchParams.get('tabId') || window.sessionStorage.getItem('tabId');
+
+    const getTabId = () => {
+        if (typeof window !== 'undefined') {
+            return window.sessionStorage.getItem('tabId');
+        } else {
+            console.log('Window is undefined');
+        }
+    }
+    const tabId = searchParams.get('tabId') || getTabId();
     const { state } = useContext(AppContext)
 
     let [tabName, setTabName] = useState(tabId ?? 'sell');
