@@ -16,7 +16,7 @@ import { getProducts } from "../../store/actions/app-actions";
 import { AppContext } from "../../context/AppContext";
 
 
-export default function ProductsPage() {
+export default function ProductsPage(props:any) {
 
   const [activePage, setActivePage] = useState<number>(1);
   const [products, setProducts] = useState<any>([]);

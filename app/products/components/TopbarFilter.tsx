@@ -36,7 +36,7 @@ export default function TopbarFilter(props: any) {
                         value={sort}
                         label={'Sort'}
                         variant='filled'
-                        onChange={handleFilter}
+                        onChange={(event:any) => handleFilter(event)}
                     >
                         <MenuItem value={''}>Sort by</MenuItem>
                         <MenuItem value={'low'}>Low - high Price</MenuItem>

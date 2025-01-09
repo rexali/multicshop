@@ -25,6 +25,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import CardImage from '../../app/products/components/CardImage';
 import ErrorBoundary from '../ErrorBoundary';
 import SearchInput from '../../app/search/SearchInput';
+import JoinPage from '../../app/auth/join/page';
 
 const pages = [
   'About',
@@ -93,7 +94,6 @@ function NavBar(props: any) {
       let next = `${pathname}?${params.toString()}`;
       router.push(`/auth/signin?next=${next}`)
     }
-
   }
 
   return (
@@ -198,6 +198,7 @@ function NavBar(props: any) {
               <span style={{ marginRight: 10 }} onClick={() => goToNextPage()}><Cart sx={{ fontSize: 18 }} /><sup style={{ color: "yellow" }}>{state?.carts[0]?.totalCarts !== 0 && state?.carts[0]?.totalCarts !== undefined ? state?.carts[0]?.totalCarts : ''}</sup></span>
             )
             }
+            <Link href={'/auth/join'} style={{ textDecoration: 'none', color: 'white', marginRight: 4 }} >Join</Link>
             {/* end */}
             {/* Messages component */}
             {!isMobile && <Link href={'/messages/user'} style={{ marginRight: 16, display: user?._id ? '' : 'none' }} ><Button sx={{ color: "white" }} startIcon={<Message />}>Messages</Button></Link>}
@@ -238,15 +239,18 @@ function NavBar(props: any) {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
+                <MenuItem key={"join"} onClick={handleCloseUserMenu}>
+                  <Link style={{ textDecoration: "none"}} href={`/auth/join`}>Join</Link>
+                </MenuItem>
 
-                <MenuItem key={"signin"} onClick={handleCloseUserMenu}>
+                {/* <MenuItem key={"signin"} onClick={handleCloseUserMenu}>
                   <Link style={{ textDecoration: "none", display: user?.token ? 'none' : '' }} href={`/auth/signin`}>Sign In</Link>
                 </MenuItem>
 
 
                 <MenuItem key={"signup"} onClick={handleCloseUserMenu}>
                   <Link style={{ textDecoration: "none" }} href={`/auth/signup`}>Sign Up</Link>
-                </MenuItem>
+                </MenuItem> */}
 
 
                 {

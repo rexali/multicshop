@@ -8,15 +8,18 @@ import { Metadata } from "next";
 import { AppProvider } from '../context/AppContext';
 import HomeFallback from '../components/common/HomeFallback';
 import { getInitialDataAPI } from './api/getInitialDataAPI';
+import type { Viewport } from 'next'
 
 export const metadata: Metadata = {
   title: { absolute: "Cshop", template: "%s | a marketplace or an ecommerce" },
   description: "It is a marketplace or an ecommerce",
-  viewport: {
-    width: "device-width",
-    initialScale: 1.0
-  },
   keywords: ["shop", "marketplace", 'ecommerce'],
+}
+
+export const viewport: Viewport = {
+  themeColor: 'black',
+  width: "device-width",
+  initialScale: 1.0
 }
 
 export default async function RootLayout({

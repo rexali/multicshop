@@ -1,6 +1,8 @@
 import ProductsPage from "../../products/page";
 
-export default function SubProductsPage(props:any) {
+export default async function SubProductsPage({ params }: { params: Promise<{ subdomain:string }> }) {
     
-    return <ProductsPage />
+    const { subdomain } = await params;
+    console.log("Product subdomain: "+subdomain)
+    return <ProductsPage subdomain={subdomain} />
 }

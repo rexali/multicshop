@@ -31,11 +31,11 @@ export default async function SubdomainPage({ params }: { params: Promise<{ subd
     } catch (error) {
         console.error('SubdomainPage: Error fetching tenant:', error)
         return (
-            <div className="flex flex-col items-center justify-center min-h-screen py-2">
+            <Box sx={{mr:'auto', ml:'auto'}}>
                 <h1 className="text-4xl font-bold text-red-500">Error</h1>
                 <p>There was an error loading the tenant information.</p>
                 <pre>{JSON.stringify(error, null, 2)}</pre>
-            </div>
+            </Box>
         )
     }
 }

@@ -19,19 +19,58 @@ import { handleSignUpSubmit } from '../utils/handleSignUpSubmit';
 import styles from "../styles/auth.module.css";
 import { useState } from 'react';
 import { useRouter } from 'next/navigation'
+import axios from 'axios';
+import { SERVER_URL } from '../../../constants/url';
+import { useDebouncedCallback } from 'use-debounce';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function SignUp() {
+export default function SignUpBusiness() {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const [loading, setLoading] = React.useState('');
+    const [subdomain, setSubDomain] = React.useState('');
+    const [name, setName] = React.useState('');
     const router = useRouter();
+    const [isAvailable, setIsAvailable] = React.useState<any>();
 
     const handleSubmit = async (event: any) => {
-        setLoading('Sending data..');
-        handleSignUpSubmit(event, setError, setSuccess, setLoading, router)
+        if (isAvailable) {
+            setLoading('Sending data..');
+            handleSignUpSubmit(event, setError, setSuccess, setLoading, router, subdomain)
+        } else {
+            setIsAvailable(false);
+        }
+    }
+
+
+    const isSubdomainAvailable = async (subdomain: string) => {
+        const { data } = await axios.get(`${SERVER_URL}/auth?subdomain=${subdomain}`);
+        if (data.status === "success" && data.data.result) {
+            setIsAvailable(true);
+            // return true;
+        } else {
+            setIsAvailable(false);
+            // return false;
+        }
+    }
+
+    const handleCheckSubdomain = useDebouncedCallback(async (subdomain: string) => {
+        await isSubdomainAvailable(subdomain)
+    }, 500);
+
+    const handleSetNameAndSubdomain = async (event: any) => {
+        const { name, value } = event.target;
+        setName(value)
+        setSubDomain(value.trim().toLowerCase().split(' ').join(''));
+        await handleCheckSubdomain(subdomain);
+    }
+
+    const handleSetSubdomain = async (event: any) => {
+        const { name, value } = event.target;
+        setSubDomain(value.trim().toLowerCase().split(' ').join(''));
+        await handleCheckSubdomain(subdomain);
     }
 
 
@@ -64,24 +103,32 @@ export default function SignUp() {
                             <Grid item xs={12} sm={6}>
                                 <TextField
                                     autoComplete="given-name"
-                                    name="first_name"
+                                    name="business_name"
                                     fullWidth
-                                    id="first_name"
-                                    label="First Name"
+                                    id="business_name"
+                                    label="Business Name"
                                     type='text'
                                     autoFocus
+                                    onChange={handleSetNameAndSubdomain}
+                                    value={name}
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
                                     required
                                     fullWidth
-                                    id="last_name"
-                                    label="Last Name"
-                                    name="last_name"
+                                    id="subdomain"
+                                    label="Subdomain"
+                                    name="subdomain"
                                     type='text'
                                     autoComplete="family-name"
+                                    value={subdomain}
+                                    onChange={handleSetSubdomain}
                                 />
+                                <TextField size='small' fullWidth defaultValue={'.siniotech.com.ng'} disabled />
+
+
+                                {isAvailable && isAvailable === true ? <Box sx={{ color: 'green' }}>It is available</Box> : isAvailable === false && <Box sx={{ color: 'red' }}>It is not available</Box>}
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField

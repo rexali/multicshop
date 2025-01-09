@@ -36,7 +36,7 @@ export default function SidebarFilter(props: any) {
                     aria-labelledby='demo-controlled-radio-button-group'
                     name='price_range'
                     value={range}
-                    onChange={handlePriceRange}
+                    onChange={(event:any)=>handlePriceRange(event)}
                 >
                     <FormControlLabel value={'0-5000'} control={<Radio />} label={<Typography variant='body2' sx={{ color: 'text.secondary' }}>&#x20A6;0 - 5000</Typography>} />
                     <FormControlLabel value={'5000-10000'} control={<Radio />} label={<Typography variant='body2' sx={{ color: 'text.secondary' }}>&#x20A6;5,000 - 10000</Typography>} />

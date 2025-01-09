@@ -31,8 +31,9 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function ProductDetailPage({ params }: { params: { productId: string } }) {
-  const product = await getProductAPI(params.productId) ?? {};
+export default async function ProductDetailPage({ params }: { params: Promise<{ productId: string, subdomain?:string }> }) {
+  let { productId } = await params;
+  const product = await getProductAPI(productId) ?? {};
   const photos = [
     'https://placehold.co/600x400/orange/white',
     'https://placehold.co/600x400/green/white',
@@ -75,7 +76,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
               >
                 {product.product_pictures?.length ?
 
-                  product.product_pictures.slice(0,2).map((product_picture: any, i: any) =>
+                  product.product_pictures.slice(0, 2).map((product_picture: any, i: any) =>
                     <div key={i} style={{ display: 'inline-block', margin: 4 }}>
                       <CardImage
                         src={`${SERVER_URL}/uploads/${product_picture}`}
@@ -165,8 +166,8 @@ export default async function ProductDetailPage({ params }: { params: { productI
                   backgroundColor: 'white',
                   overflow: 'auto',
                   whiteSpace: 'nowrap',
-                  marginLeft: 'auto',
-                  marginRight: 'auto',
+                  // marginLeft: 'auto',
+                  // marginRight: 'auto',
                   textAlign: 'center',
                   maxWidth: 'fit-content',
                   borderRadius: 15
@@ -175,7 +176,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
 
                 {product.product_pictures?.length ?
 
-                  product.product_pictures.reverse().slice(0,3).map((product_picture: any, i: any) =>
+                  product.product_pictures.reverse().slice(0, 3).map((product_picture: any, i: any) =>
                     <div key={i} style={{ display: 'inline-block', margin: 10 }}>
                       <CardImage
                         src={`${SERVER_URL}/uploads/${product_picture}`}
@@ -226,7 +227,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
           View all
         </Link>
       </Box>
-      <Toaster/>
+      <Toaster />
     </Box>
   );
 }
