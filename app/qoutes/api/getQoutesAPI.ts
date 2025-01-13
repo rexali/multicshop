@@ -4,7 +4,7 @@ import axios from "axios";
 const getQoutesAPI = async (pageNumber: any = 1) => {
 
   try {
-    let { data } = await axios.get(`${SERVER_URL}/qoutes?page=${pageNumber}`, {
+    let { data } = await axios.get(`${SERVER_URL}/qoutes?page=${pageNumber}&subdomain=maindomain`, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',

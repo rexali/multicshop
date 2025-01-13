@@ -6,7 +6,7 @@ import axios from "axios";
 const getSubscriptionsAPI = async (pageNumber: any = 1) => {
 
   try {
-    let { data } = await axios.get(`${SERVER_URL}/subscriptions?page=${pageNumber}`, {
+    let { data } = await axios.get(`${SERVER_URL}/subscriptions?page=${pageNumber}&subdomain=maindomain`, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',

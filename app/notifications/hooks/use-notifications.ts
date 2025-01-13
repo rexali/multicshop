@@ -14,7 +14,7 @@ export const useNotifications = (dispatch: any, pageNumber?: any) => {
     const getNotificationData = async () => {
 
       try {
-        let { data: { data: { notifications } } } = await axios.get(`${SERVER_URL}/notifications?page=${pageNumber}`, {
+        let { data: { data: { notifications } } } = await axios.get(`${SERVER_URL}/notifications?page=${pageNumber}&subdomain=maindomain`, {
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',

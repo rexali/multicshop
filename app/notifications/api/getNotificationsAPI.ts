@@ -6,7 +6,7 @@ import axios from "axios";
 const getNotificationsAPI = async (pageNumber: any = 1) => {
 
     try {
-        let { data } = await axios.get(`${SERVER_URL}/notifications?page=${pageNumber}`, {
+        let { data } = await axios.get(`${SERVER_URL}/notifications?page=${pageNumber}&subdomain=maindomain`, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',

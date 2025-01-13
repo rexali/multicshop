@@ -6,7 +6,7 @@ import axios from "axios";
 const getCartsAPI = async (page: number = 1) => {
 
     try {
-        let { data } = await axios.get(`${SERVER_URL}/carts?page=` + page, {
+        let { data } = await axios.get(`${SERVER_URL}/carts?page=${page}&subdomain=maindomain`, {
             withCredentials: false,
             headers: {
                 'Content-Type': 'application/json',

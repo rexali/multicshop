@@ -4,7 +4,7 @@ import axios from "axios";
 const getUserFavouritesAPI = async (userId: string, page?: number) => {
 
     try {
-        let data = await fetch(`${SERVER_URL}/favourites/pages/` + page + '/users/' + userId).then(res => res.json());
+        let data = await fetch(`${SERVER_URL}/favourites/pages/${page}/users/${userId}/subdomains/maindomain`).then(res => res.json());
         if (data.data === null) {
             return [];
         }

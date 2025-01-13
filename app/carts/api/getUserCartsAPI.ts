@@ -6,7 +6,7 @@ import axios from "axios";
 const getUserCartsAPI = async (userId: string, page: number = 1) => {
 
     try {
-        let { data } = await axios.get(`${SERVER_URL}/carts/pages/${page}/users/${userId}`, {
+        let { data } = await axios.get(`${SERVER_URL}/carts/pages/${page}/users/${userId}/subdomains/maindomain`, {
             withCredentials: false,
             headers: {
                 'Content-Type': 'application/json',

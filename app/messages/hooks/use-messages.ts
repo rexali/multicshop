@@ -14,7 +14,7 @@ export const useMessages = (dispatch: any, pageNumber: any = 1) => {
     const getMessageData = async () => {
 
       try {
-        let { data: { data: { messages } } } = await axios.get(`${SERVER_URL}/messages?page=${pageNumber}`, {
+        let { data: { data: { messages } } } = await axios.get(`${SERVER_URL}/messages?page=${pageNumber}&subdomain=maindomain`, {
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',

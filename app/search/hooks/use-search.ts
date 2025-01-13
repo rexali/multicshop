@@ -10,7 +10,7 @@ export function useSearch(term: any, pageNumber: any) {
     React.useEffect(() => {
         const searchProducts = async () => {
             try {
-                let response = await fetch(`${BASE_URL}/searchs?term=${term}&page=${pageNumber}`, {
+                let response = await fetch(`${BASE_URL}/searchs?term=${term}&page=${pageNumber}&subdomain=maindomain`, {
                     method: "GET",
                     mode: 'cors',
                     headers: {

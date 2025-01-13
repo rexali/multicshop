@@ -7,7 +7,7 @@ export const useFilterData = (page: number, filters: any[]) => {
     React.useEffect(() => {
         const fetchData = async () => {
             try {
-                let data = await fetch(`${SERVER_URL}/filterings?page=${page}&filter1=${filters[0]}&filter2=${filters[1]}`).then(res => res.json());
+                let data = await fetch(`${SERVER_URL}/filterings?page=${page}&filter1=${filters[0]}&filter2=${filters[1]}&subdomain=maindomain`).then(res => res.json());
                 if (data.data === null) {
                     setData([]);
                 }

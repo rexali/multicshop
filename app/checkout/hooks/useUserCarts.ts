@@ -14,7 +14,7 @@ export const useUserCarts = (userId: string, dispatch: any, pageNumber: number) 
     const getCartData = async () => {
 
       try {
-        let { data } = await axios.get(`${SERVER_URL}/carts/pages/${pageNumber}/users/${userId}`, {
+        let { data } = await axios.get(`${SERVER_URL}/carts/pages/${pageNumber}/users/${userId}/subdomains/maindomain`, {
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',

@@ -12,7 +12,7 @@ import HomeFallback from "../../components/common/HomeFallback";
 
 export default function RecommendedProducts(props: any) {
 
-  const { data, isLoading, error } = useSWR(`${SERVER_URL}/products/${1}/initial`, fetchInitialDataAPI);
+  const { data, isLoading, error } = useSWR(`${SERVER_URL}/initial?page=${1}&subdomain=${props.subdomain ?? 'maindomain'}`, fetchInitialDataAPI);
 
   if (error) {
     return <Fallback item={'Failed to load'} />

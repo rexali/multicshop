@@ -6,7 +6,7 @@ import axios from "axios";
 const getMessagesAPI = async (pageNumber: any = 1) => {
 
   try {
-    let { data } = await axios.get(`${SERVER_URL}/messages?page=${pageNumber}`, {
+    let { data } = await axios.get(`${SERVER_URL}/messages?page=${pageNumber}&subdomain=maindomain`, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',

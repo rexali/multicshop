@@ -7,7 +7,7 @@ export const useSortData = (page: number, sort: string) => {
     React.useEffect(() => {
         const fetchData = async () => {
             try {
-                let data = await fetch(`${SERVER_URL}/sortings?page=${page}&sort=${sort}`).then(res => res.json());
+                let data = await fetch(`${SERVER_URL}/sortings?page=${page}&sort=${sort}&subdomain=maindomain`).then(res => res.json());
                 if (data.data === null) {
                     setData([]);
                 }
