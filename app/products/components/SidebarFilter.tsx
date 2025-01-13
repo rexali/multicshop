@@ -10,10 +10,10 @@ import HomeFallback from '../../../components/common/HomeFallback';
 
 
 export default function SidebarFilter(props: any) {
-    const [range, setRange] = useState<string>('');
+    const [range, setRange] = useState<string>();
     const [activePage, setActivePage] = useState<number>(1);
     const [open, setOpen] = useState<boolean>(false);
-    const prices = range?.split('-').map(price => price.trim()).filter(price => price !== '');
+    const prices = range?.split('-').map(price => price.trim()).filter(price => price !== '') as any;
     const { data } = useFilterData(activePage, prices);
 
     const handlePriceRange = (event: any) => {

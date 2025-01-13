@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from "react";
-import { Box, Container } from "@mui/material";
+import { Box, Container, Grid } from "@mui/material";
 import ProductList from "./ProductList";
 import ReactPagination from "../../components/react-pagination";
 import { getProductsAPI } from "./api/getProductsAPI";
@@ -16,7 +16,7 @@ import { getProducts } from "../../store/actions/app-actions";
 import { AppContext } from "../../context/AppContext";
 
 
-export default function ProductsPage(props:any) {
+export default function ProductsPage(props: any) {
 
   const [activePage, setActivePage] = useState<number>(1);
   const [products, setProducts] = useState<any>([]);
@@ -58,13 +58,15 @@ export default function ProductsPage(props:any) {
         Products <TopbarFilter handleSetProducts={handleSetProducts} activePage={activePage} />
       </h3>
       {<Box display={"flex"} justifyContent={'center'}><SearchInput /></Box>}
-      <Box marginTop={4} display={"flex"} flexDirection={'row'} justifyContent={'space-between'} >
-        <Box>
+      <Grid container rowSpacing={1} columnSpacing={4}>
+        <Grid sx={{ display: { xs: 'none', md: 'block', lg: 'block' } }} item xs={12} sm={12} md={2} lg={2}>
           {!isMobile && <DesktopProductCategories categoryData={categoryData} />}
           {!isMobile && <SidebarFilter handleSetProducts={handleSetProducts} activePage={activePage} />}
-        </Box>
-        <ProductList products={products} role={''} refreshProducts={getProductsData} />
-      </Box>
+        </Grid>
+        <Grid item xs={12} sm={12} md={10} lg={10}>
+          <ProductList products={products} role={''} refreshProducts={getProductsData} />
+        </Grid>
+      </Grid>
       <Box marginTop={4} display={"flex"} justifyContent={'center'} >
         <ReactPagination
           activePage={activePage}
