@@ -16,7 +16,7 @@ export default function DesktopProductCategories(props: any) {
             <Link
                 key={i}    
                 style={{
-                    maxWidth: '100%',
+                    maxWidth: '10%',
                     maxHeight: '100%',
                     textAlign: 'center',
                     alignSelf: 'center',
@@ -24,7 +24,7 @@ export default function DesktopProductCategories(props: any) {
                     display: 'block',
                     marginRight: 2,
                     marginBottom: 1,
-                    color:'black'
+                    color:'black',
                 }}
                 href={`/category/?term=${catx.toLowerCase()}`}>
                 <ListItem>
@@ -33,8 +33,9 @@ export default function DesktopProductCategories(props: any) {
                     {/* </ListItemButton> */}
                 </ListItem>
             </Link>
-        )
+        ) 
     }
+
 
     return (
         <ErrorBoundary>

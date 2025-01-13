@@ -1,5 +1,4 @@
 import AppPage from "../page";
-
 import { notFound } from 'next/navigation';
 import TenantModel from '../lib/model.tenant';
 import { Fragment } from "react";
@@ -20,7 +19,7 @@ export default async function SubdomainPage({ params }: { params: Promise<{ subd
 
         return (
             <Fragment>
-                <AppPage />
+                <AppPage params={Promise.resolve({ subdomain })} />
                 <Box sx={{ mx: 'auto' }}>
                     <h1 className="text-4xl font-bold">Welcome to {tenant.name}</h1>
                     <p>This is a multitenant site for {subdomain}</p>
@@ -31,7 +30,7 @@ export default async function SubdomainPage({ params }: { params: Promise<{ subd
     } catch (error) {
         console.error('SubdomainPage: Error fetching tenant:', error)
         return (
-            <Box sx={{mr:'auto', ml:'auto'}}>
+            <Box marginTop={2} padding={2} display={"flex"} justifyContent={'center'}>
                 <h1 className="text-4xl font-bold text-red-500">Error</h1>
                 <p>There was an error loading the tenant information.</p>
                 <pre>{JSON.stringify(error, null, 2)}</pre>
