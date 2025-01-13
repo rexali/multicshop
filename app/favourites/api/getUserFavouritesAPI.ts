@@ -1,10 +1,10 @@
 import { BASE_URL, SERVER_URL } from "../../../constants/url";
 import axios from "axios";
 
-const getUserFavouritesAPI = async (userId: string, page?: number) => {
+const getUserFavouritesAPI = async (userId: string, page?: number,subdomain: string = 'maindomain') => {
 
     try {
-        let data = await fetch(`${SERVER_URL}/favourites/pages/${page}/users/${userId}/subdomains/maindomain`).then(res => res.json());
+        let data = await fetch(`${SERVER_URL}/favourites/pages/${page}/users/${userId}/subdomains/${subdomain}`).then(res => res.json());
         if (data.data === null) {
             return [];
         }

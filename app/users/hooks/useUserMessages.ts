@@ -5,7 +5,7 @@ import { getMessages } from '../../../store/actions/app-actions';
 import axios from 'axios';
 import React, { useEffect } from 'react';
 
-export const useUserMessages = (userId: string, dispatch: any, pageNumber?: number) => {
+export const useUserMessages = (userId: string, dispatch: any, pageNumber?: number,subdomain: string = 'maindomain') => {
 
   const [messages, setMessages] = React.useState<any>([]);
 
@@ -14,7 +14,7 @@ export const useUserMessages = (userId: string, dispatch: any, pageNumber?: numb
     const getMessageData = async () => {
 
       try {
-        let { data: { data: { messages } } } = await axios.get(`${SERVER_URL}/messages/pages/${pageNumber}/users/${userId}/subdomains=maindomain`, {
+        let { data: { data: { messages } } } = await axios.get(`${SERVER_URL}/messages/pages/${pageNumber}/users/${userId}/subdomain/${subdomain}`, {
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',

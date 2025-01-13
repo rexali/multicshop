@@ -3,14 +3,14 @@
 import { BASE_URL } from "../../../constants/url";
 import React from "react";
 
-export function useSearch(term: any, pageNumber: any) {
+export function useSearch(term: any, pageNumber: any,subdomain: string = 'maindomain',) {
     
     const [data, setData] = React.useState();
 
     React.useEffect(() => {
         const searchProducts = async () => {
             try {
-                let response = await fetch(`${BASE_URL}/searchs?term=${term}&page=${pageNumber}&subdomain=maindomain`, {
+                let response = await fetch(`${BASE_URL}/searchs?term=${term}&page=${pageNumber}&subdomain=${subdomain}`, {
                     method: "GET",
                     mode: 'cors',
                     headers: {

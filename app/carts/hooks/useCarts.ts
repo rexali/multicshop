@@ -5,7 +5,7 @@ import { getCarts } from '../../../store/actions/app-actions';
 import axios from 'axios';
 import React, { useEffect } from 'react';
 
-export const useCarts = (dispatch: any, pageNumber: number) => {
+export const useCarts = (dispatch: any, pageNumber: number, subdomain: string = 'maindomain') => {
 
   const [carts, setCarts] = React.useState<any>([]);
 
@@ -14,7 +14,7 @@ export const useCarts = (dispatch: any, pageNumber: number) => {
     const getCartData = async () => {
 
       try {
-        let { data } = await axios.get(`${SERVER_URL}/carts?page=${pageNumber}&subdomain=maindomain`, {
+        let { data } = await axios.get(`${SERVER_URL}/carts?page=${pageNumber}&subdomain=${subdomain}`, {
           withCredentials: false,
           headers: {
             'Accept': 'application/json',

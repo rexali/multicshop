@@ -1,9 +1,9 @@
 import { SERVER_URL } from "../../../constants/url";
 
-const getSortedProductsAPI = async (sort: any, page: number = 1) => {
+const getSortedProductsAPI = async (sort: any, page: number = 1,subdomain: string = 'maindomain',) => {
 
     try {
-        let data = await fetch(`${SERVER_URL}/sortings?page=${page}&sort=${sort}&subdomain=maindomain`).then(res => res.json());
+        let data = await fetch(`${SERVER_URL}/sortings?page=${page}&sort=${sort}&subdomain=${subdomain}`).then(res => res.json());
         if (data.data === null) {
             return []
         }

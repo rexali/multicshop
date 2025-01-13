@@ -3,10 +3,10 @@
 import { BASE_URL, SERVER_URL } from "../../../constants/url";
 import axios from "axios";
 
-const getSubscriptionsAPI = async (pageNumber: any = 1) => {
+const getSubscriptionsAPI = async (pageNumber: any = 1,subdomain: string = 'maindomain') => {
 
   try {
-    let { data } = await axios.get(`${SERVER_URL}/subscriptions?page=${pageNumber}&subdomain=maindomain`, {
+    let { data } = await axios.get(`${SERVER_URL}/subscriptions?page=${pageNumber}&subdomain=${subdomain}`, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
