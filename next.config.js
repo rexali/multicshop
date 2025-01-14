@@ -26,10 +26,23 @@ const nextConfig = {
                 hostname: 'very-deep-tech-server.onrender.com',
                 port: '',
                 pathname: '/uploads/**'
+            },
+            {
+                protocol: 'https',
+                hostname: 'images.unsplash.com',
+                port: '',
+                pathname: ''
+            },
+            {
+                protocol: 'https',
+                hostname: 'placehold.co',
+                port: '',
+                pathname: ''
             }
+
         ],
+
         dangerouslyAllowSVG: true,
-        domains: ['images.unsplash.com', 'placehold.co', 'very-deep-tech-server.onrender.com', 'localhost'],
     },
 }
 

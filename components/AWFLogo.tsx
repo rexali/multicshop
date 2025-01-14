@@ -7,10 +7,10 @@ function AWFLogo() {
     return (
         <Link href={'/'}>
             <Image
-                src={require("../assets/images/awf-logo.png")}
+                src={"/awf-logo.png"}
                 width={40}
                 height={40}
-                alt="AWF"
+                alt="cs"
                 style={{
                     borderRadius: 40,
                     marginRight: 5
