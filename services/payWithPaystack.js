@@ -1,10 +1,10 @@
 'use client'
 
-import { clearUserCartsAPI } from "@/app/carts/api/clearCartsAPI";
-import { createOrderAPI } from "@/app/orders/api/createOrderAPI";
-import { createTransactionAPI } from "@/app/transactions/api/createTransactionAPI";
-import { getToken } from "@/utils/getToken";
 import PaystackPop from "@paystack/inline-js";
+import { clearUserCartsAPI } from "../app/carts/api/clearCartsAPI";
+import { createOrderAPI } from "../app/orders/api/createOrderAPI";
+import { createTransactionAPI } from "../app/transactions/api/createTransactionAPI";
+import { getToken } from "../utils/getToken";
 
 export function payWithPaystack(
     email,

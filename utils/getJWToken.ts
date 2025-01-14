@@ -1,6 +1,7 @@
 'use client'
 
-import { BASE_URL } from "@/constants/url";
+import { SERVER_URL } from "../constants/url";
+
 /**
  * Get a jwt token strin
  * @returns a token object
@@ -8,7 +9,7 @@ import { BASE_URL } from "@/constants/url";
 async function getJWToken() {
   try {
     // fetch data
-    const res = await fetch(BASE_URL + "/jwt", { mode: "cors", method: "GET" });
+    const res = await fetch(SERVER_URL + "/jwt", { mode: "cors", method: "GET" });
     // get jwtoken
     const { jwtoken } = await res.json();
     // return jwtoken

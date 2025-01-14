@@ -12,7 +12,7 @@ import { useAuth } from '../../hooks/use-auth';
 import CardImage from '../products/components/CardImage';
 
 export default function CheckoutCard({ product}: { product: any}) {
-  const auth = useAuth(); // authenticate user
+  useAuth(); // authenticate user
 
   return (
     <Card sx={{ maxWidth: 345, margin: 1 }}>

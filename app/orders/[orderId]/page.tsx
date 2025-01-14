@@ -20,8 +20,8 @@ export async function generateStaticParams() {
     }
 }
 
-export default async function OrderPage({ params }: { params: { orderId: string } }) {
-    const orderId = params.orderId;
+export default async function OrderPage({ params }: { params: Promise<{ orderId: string }> }) {
+    const {orderId} = await params;
     let order: any
     try {
         order = await getOrderAPI(orderId) ?? {};

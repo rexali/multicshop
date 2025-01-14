@@ -2,7 +2,7 @@
 
 import { SERVER_URL } from "../../../constants/url";
 
-export const instantSearchProductAPI = async (term: string, pageNumber?: string,subdomain: string = 'maindomain') => {
+export const instantSearchProductAPI = async (term: string, pageNumber?:number,subdomain: string = 'maindomain') => {
     try {
         let response = await fetch(`${SERVER_URL}/search?term=${term}&page=${pageNumber}&subdomain=${subdomain}`, {
             method: "GET",

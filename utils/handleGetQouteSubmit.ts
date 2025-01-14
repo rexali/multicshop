@@ -1,5 +1,5 @@
-import { SERVER_URL } from "@/constants/url";
 import axios from "axios";
+import { SERVER_URL } from "../constants/url";
 
 const handleGetQouteSubmit = async (favouriteData: any) => {
 

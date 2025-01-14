@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid';
 import ProductCard from "./ProductCard";
 
 export default function ProductList(props: any) {
-    let products = props.products ?? []
+    const products = props.products ?? []
     return (
         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
             {products.map((product: any) => {
@@ -16,4 +16,3 @@ export default function ProductList(props: any) {
         </Grid>
     )
 }
-// marginTop={2} display={"flex"} justifyContent={'center'}
