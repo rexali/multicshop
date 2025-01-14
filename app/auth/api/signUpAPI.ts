@@ -17,7 +17,8 @@ export async function signUpAPI(
     email: any,
     password: any,
     remember_me?: any,
-    subdomain?:any
+    subdomain?:any,
+    businessName?:any
 ) {
 
     try {
@@ -36,7 +37,8 @@ export async function signUpAPI(
                 email,
                 password,
                 remember_me,
-                subdomain
+                subdomain,
+                businessName
             }),
         });
         // wait for registration result

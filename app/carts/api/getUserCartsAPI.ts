@@ -3,7 +3,7 @@
 import { SERVER_URL } from "../../../constants/url";
 import axios from "axios";
 
-const getUserCartsAPI = async (subdomain: string = 'maindomain',userId: string, page: number = 1) => {
+const getUserCartsAPI = async (userId: string, subdomain: string = 'maindomain', page: number = 1) => {
 
     try {
         let { data } = await axios.get(`${SERVER_URL}/carts/pages/${page}/users/${userId}/subdomains/${subdomain}`, {

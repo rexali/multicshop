@@ -20,7 +20,7 @@ export default function AddProduct() {
 
     const auth = useAuth();
     const userId = auth.user?._id || getToken('_id') as string;
-    const subdomain = auth.user?.lastName ?? "";
+    const subdomain = auth.user?.subdomain ?? "";
 
     const handleSubmit = async (event: any) => {
         setLoading('Sending data..');

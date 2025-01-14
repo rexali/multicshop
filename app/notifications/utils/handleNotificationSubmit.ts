@@ -7,7 +7,8 @@ const handleNotificationSubmit = async (
     setSuccess: any,
     setError: any,
     setLoading: any,
-    userId: any
+    userId: any,
+    subdomain?:any
 ) => {
     // prevent default
     event.preventDefault();
@@ -21,6 +22,7 @@ const handleNotificationSubmit = async (
             userId: userId,
             title: title.value,
             body: body.value,
+            subdomain
         }
         await createNotificationAPI(notificationData, setSuccess, setError, setLoading)
     } catch (error) {

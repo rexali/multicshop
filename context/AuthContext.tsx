@@ -16,7 +16,7 @@ const initialState = {
         _id: "",
         role: "user",
         photo: "",
-        lastName:""
+        subdomain: ""
     },
 };
 

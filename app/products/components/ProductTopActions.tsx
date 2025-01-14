@@ -53,7 +53,7 @@ export default function ProductTopActions({ product, role, refreshProducts }: { 
                 size="small"
                 onClick={async () => {
                     if (userId) {
-                        await addToWishListOrRemove(userId, product._id, handleOpen);
+                        await addToWishListOrRemove(userId, product._id,auth.user.subdomain, handleOpen);
                         refreshProducts();
                     } else {
                         router.push('/auth/signin?next=' + goToSavedLinkpath(''));

@@ -42,7 +42,8 @@ export default function CheckoutList(props: any) {
         ,
         total: totalAmount,
         paymentStatus: "pending",
-        shippingMethod: "GENERAL"
+        shippingMethod: "GENERAL",
+        subdomain:auth.user.subdomain
     };
 
     const transactionData = {
@@ -52,8 +53,8 @@ export default function CheckoutList(props: any) {
         type: "payment", // tranfer, withdraw
         reference: "",
         currency: "NG",
-        paymentMethod: "Paystack"
-
+        paymentMethod: "Paystack",
+        subdomain:auth.user.subdomain
     }
 
     React.useEffect(() => {

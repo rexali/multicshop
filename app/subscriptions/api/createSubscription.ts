@@ -4,13 +4,13 @@ import axios from "axios";
 import { SERVER_URL } from "../../../constants/url"
 
 
-async function createSubscription(email: any, setSuccess: any, setError: any, setLoading:any) {
+async function createSubscription(datav: { email: string, subdomain: string }, setSuccess: any, setError: any, setLoading: any) {
     try {
-        const {data} = await axios.post(`${SERVER_URL}/subscriptions`, { email }, {
+        const { data } = await axios.post(`${SERVER_URL}/subscriptions`, datav, {
             headers: {
                 "Content-Type": 'application/json',
             }
-        }); 
+        });
         if (data.data.subscription._id) {
             setLoading('');
             setSuccess('SUCCESS');
@@ -22,7 +22,7 @@ async function createSubscription(email: any, setSuccess: any, setError: any, se
         console.warn(error);
         setLoading('');
         setError('ERROR! ' + error.message);
-    }finally{
+    } finally {
         setTimeout(() => {
             setSuccess('')
             setError("")

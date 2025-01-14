@@ -5,8 +5,9 @@ import Button from "@mui/material/Button"
 import Grid from "@mui/material/Grid"
 import TextField from "@mui/material/TextField"
 import { useMediaQuery } from "react-responsive"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { handleSubscribeSubmit } from "./utils/handleSubscribeSubmit"
+import { AppContext } from "../../context/AppContext"
 
 
 export default function CreateSubscription() {
@@ -14,10 +15,11 @@ export default function CreateSubscription() {
     const [success, setSuccess] = useState('');
     const isMobile = useMediaQuery({ maxDeviceWidth: 1023 });
     const [loading, setLoading] = useState('');
+    const {state} = useContext(AppContext)
 
     const handleSubmit = async (event: any) => {
         setLoading('Sending data..')
-        await handleSubscribeSubmit(event, setSuccess, setError, setLoading)
+        await handleSubscribeSubmit(event, setSuccess, setError, setLoading, state.user.subdomain)
     };
 
     return (

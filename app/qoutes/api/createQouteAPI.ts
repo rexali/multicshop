@@ -5,7 +5,8 @@ const createQouteAPI = async (
     event: any,
     setSuccess: any,
     setError: any,
-    setLoading:any
+    setLoading:any,
+    subdomain:any
 ) => {
     // prevent default
     event.preventDefault();
@@ -22,7 +23,8 @@ const createQouteAPI = async (
             email: email.value,
             phone: phone.value,
             productId: productId.value,
-            message: message.value
+            message: message.value,
+            subdomain
         }
         let result = await fetchData(`${SERVER_URL}/qoutes`, { body: JSON.stringify(qouteData), method: "post" });
         if (result.data.qoute._id) {

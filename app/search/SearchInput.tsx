@@ -9,16 +9,18 @@ import { instantSearchProductAPI } from './api/instantSearchAPI';
 import Link from 'next/link';
 import { useDebouncedCallback } from 'use-debounce';
 import { useMediaQuery } from "react-responsive";
+import { AppContext } from '../../context/AppContext';
 
 
 export default function SearchInput() {
   const [data, setData] = React.useState<any>([]);
   const [term, setTerm] = React.useState();
   const isMobile = useMediaQuery({ maxDeviceWidth: 1023 });
+  const { state } = React.useContext(AppContext)
 
 
   const handleSearch = useDebouncedCallback(async (term) => {
-    setData(await instantSearchProductAPI(term));
+    setData(await instantSearchProductAPI(term, 1, state.user.domain));
   }, 400);
 
   let productNames = data.map((product: any) => product.product_name);
@@ -45,7 +47,7 @@ export default function SearchInput() {
       <IconButton type="submit" sx={{ p: '2px' }} aria-label="search" >
         <SearchIcon />
       </IconButton>
-      <Paper sx={{zIndex:9999}}>
+      <Paper sx={{ zIndex: 9999 }}>
         {
           productNames?.map((name: any, i: number) => <Link key={i} style={{ textDecoration: "none", color: 'black', textAlign: 'center', margin: 4, display: "block", padding: 4 }} href={"/search?term=" + name}>{name}</Link>)
         }

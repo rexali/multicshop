@@ -2,7 +2,7 @@ import { createReviewAPI } from "../api/createReviewAPI";
 import { isBoughtByUserAPI } from "../api/isBoughtByUserAPI";
 import { goToSavedLinkpath } from "../../../utils/goToSavedLinkPath";
 
-const handleReviewSubmit = async (event: any, setPostSuccess: any, setPostError: any, setLoading:any, toast:any) => {
+const handleReviewSubmit = async (event: any, setPostSuccess: any, setPostError: any, setLoading:any, toast:any, subdomain?:any) => {
     event.preventDefault();
     
     const {
@@ -16,7 +16,8 @@ const handleReviewSubmit = async (event: any, setPostSuccess: any, setPostError:
         userId: user_id.value,
         productId: product_id.value,
         review: review.value,
-        ratingScore: Number(rating_score.value)
+        ratingScore: Number(rating_score.value),
+        subdomain
     }
     if (reviewData.userId) {
         

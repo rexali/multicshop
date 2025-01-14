@@ -22,6 +22,7 @@ export default function JoinPage(props: any) {
 
     return (
         <div className="container" style={styles.minheight}>
+            
             <div className="scrollmenu" style={styles.marginTop}>
                 <Link style={styles.navTabs} data-toggle="tab" onClick={() => openTab('signin')} href={""} ><small>Sign in</small></Link>
                 <Link style={styles.navTabs} data-toggle="tab" onClick={() => openTab('signup')} href={""} ><small>Register</small></Link>

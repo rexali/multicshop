@@ -11,6 +11,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Copyright from '../../../components/common/copyright';
 import { handleNotificationSubmit } from '../utils/handleNotificationSubmit';
 import { getToken } from '../../../utils/getToken';
+import { AuthContext } from '../../../context/AuthContext';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
@@ -19,12 +20,12 @@ export default function AddNotification() {
   const [error, setError] = React.useState('');
   const [success, setSuccess] = React.useState('');
   const [loading, setLoading] = React.useState('');
+  const { state } = React.useContext(AuthContext)
+  const userId = state.user._id || getToken('_id') as string;
 
-  const userId = getToken('_id') as string;
-  
   const handleSubmit = async (event: any) => {
     setLoading('Sending data..')
-    await handleNotificationSubmit(event, setSuccess, setError, setLoading, userId)
+    await handleNotificationSubmit(event, setSuccess, setError, setLoading, userId, state.user.subdomain)
   }
 
   return (

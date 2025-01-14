@@ -3,15 +3,17 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { createQouteAPI } from "./api/createQouteAPI";
 import * as React from "react";
+import { useAuth } from "../../hooks/use-auth";
 
 export function AddQoute(props: any) {
     const [success, setSuccess] = React.useState('');
     const [error, setError] = React.useState('');
     const [loading, setLoading] = React.useState('');
+    const {user} =useAuth()
 
     const handleSubmit = async (event: any) => {
         setLoading('Sending data..')
-        await createQouteAPI(event, setSuccess, setError, setLoading);
+        await createQouteAPI(event, setSuccess, setError, setLoading, user.subdomain);
     };
 
     return (

@@ -9,13 +9,15 @@ import { useDebouncedCallback } from 'use-debounce'
 import Box from '@mui/material/Box';
 import SearchList from '../search/SearchList';
 import { instantSearchProductAPI } from '../search/api/instantSearchAPI';
+import { AppContext } from '../../context/AppContext';
 
-export default function SellProducts(props:any) {
+export default function SellProducts(props: any) {
     const [data, setData] = React.useState([]);
     const [term, setTerm] = React.useState();
+    const { state } = React.useContext(AppContext)
 
     const handleSearch = useDebouncedCallback(async (term) => {
-        setData(await instantSearchProductAPI(term));
+        setData(await instantSearchProductAPI(term, 1, state.user.subdomain));
     }, 400);
 
     return (

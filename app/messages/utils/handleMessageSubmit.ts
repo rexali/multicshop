@@ -2,7 +2,7 @@
 
 import { handleCreateMessageAPI } from "../api/handleCreateMessageAPI";
 
-const handleMessageSubmit = async (event: any, setSuccess: any, setError: any, setLoading: any, userId?: any) => {
+const handleMessageSubmit = async (event: any, setSuccess: any, setError: any, setLoading: any, userId?: any, subdomain?:string) => {
     // prevent default
     event.preventDefault();
     // check userId is defined
@@ -19,6 +19,7 @@ const handleMessageSubmit = async (event: any, setSuccess: any, setError: any, s
             sender: event.target.elements.email?.value ?? '',
             lastName: event.target.elements.lastName?.value ?? '',
             firstName: event.target.elements.firstName?.value ?? '',
+            subdomain
         }
 
         await handleCreateMessageAPI(messageData, setSuccess, setError, setLoading);

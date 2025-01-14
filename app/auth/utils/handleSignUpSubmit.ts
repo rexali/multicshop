@@ -20,7 +20,15 @@ export const handleSignUpSubmit = (
     // prevent default behaviour
     event.preventDefault();
     // get user data
-    const { first_name, last_name, email, password, confirm_password, remember_me } = event.target.elements;
+    const { 
+        first_name, 
+        last_name, 
+        email, 
+        password, 
+        confirm_password, 
+        remember_me,
+        business_name 
+    } = event.target.elements;
     //   check if user password and confirm password before posting user data   
     if (password.value === confirm_password.value) {
         // call handleSignUp method and collect user data
@@ -30,6 +38,7 @@ export const handleSignUpSubmit = (
             email.value,
             password.value,
             remember_me.value,
+            business_name.value,
             subdomain
         ).then(((result) => {
             if (result.status === "success") {

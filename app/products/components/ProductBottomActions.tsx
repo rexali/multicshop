@@ -73,7 +73,9 @@ export default function ProductBottomActions({ product, role, refreshProducts }:
                                     product_id: product._id,
                                     user_id: userId,
                                     quantity: quantity,
-                                    price: product.product_price
+                                    price: product.product_price,
+                                    subdomain: state.user.subdomain
+
                                 });
 
                                 if (cart._id) {

@@ -21,7 +21,7 @@ export function useAuth() {
         email: "",
         role: "",
         photo: "",
-        lastName:""
+        subdomain:""
     });
     // declare and assign loading state
     const [loading, setLoading] = useState(true);
