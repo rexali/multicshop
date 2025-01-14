@@ -30,14 +30,12 @@ const nextConfig = {
             {
                 protocol: 'https',
                 hostname: 'images.unsplash.com',
-                port: '',
-                pathname: ''
+                port: ''
             },
             {
                 protocol: 'https',
                 hostname: 'placehold.co',
-                port: '',
-                pathname: ''
+                port: ''
             }
 
         ],
