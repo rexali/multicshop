@@ -30,13 +30,9 @@ export default async function AppPage({ params }: { params: Promise<{ subdomain?
   let data: any = {};
   try {
     const paramsValue = await params;
-    data = await getInitialDataAPI(paramsValue.subdomain ?? "maindomain");
+    data = await getInitialDataAPI(paramsValue.subdomain);
   } catch (error: any) {
     return <Fallback item={`Error! ${error.message}`} />
-  }
-
-  if (!Object.keys(data).length) {
-    return <HomeFallback />
   }
 
   return (
