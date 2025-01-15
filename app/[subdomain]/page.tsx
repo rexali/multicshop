@@ -1,18 +1,20 @@
 import AppPage from "../page";
 import { notFound } from 'next/navigation';
-import TenantModel from '../lib/model.tenant';
 import { Fragment } from "react";
 import Box from "@mui/material/Box";
+import { SERVER_URL } from "../../constants/url";
 
 export default async function SubdomainPage({ params }: { params: Promise<{ subdomain: string }> }) {
     const { subdomain } = await params;
     console.log('SubdomainPage: Rendering page for subdomain:', subdomain)
 
     try {
-        const tenant = await TenantModel.findOne({ subdomain })
-        console.log('SubdomainPage: Tenant retrieved:', tenant)
+        // Use fetch to verify if the subdomain exists
+        const data: any = await fetch(`${SERVER_URL}/tenant?subdomain=${subdomain}`);
 
-        if (!tenant) {
+        console.log('SubdomainPage: Tenant retrieved:', data.data.tenant)
+
+        if (!data.data.tenant) {
             console.log('SubdomainPage: Tenant not found, redirecting to 404')
             notFound()
         }
@@ -20,10 +22,10 @@ export default async function SubdomainPage({ params }: { params: Promise<{ subd
         return (
             <Fragment>
                 <AppPage params={Promise.resolve({ subdomain })} />
-                <Box sx={{ mx: 'auto' }}>
-                    <h1 className="text-4xl font-bold">Welcome to {tenant.name}</h1>
+                <Box marginTop={2} padding={2} display={"flex"} alignItems={'center'} justifyContent={'center'}>
+                    <h1 className="text-4xl font-bold">Welcome to {data.data.tenant.name}</h1>
                     <p>This is a multitenant site for {subdomain}</p>
-                    <pre>{JSON.stringify(tenant, null, 2)}</pre>
+                    <pre>{JSON.stringify(data.data.tenant, null, 2)}</pre>
                 </Box>
             </Fragment>
         )

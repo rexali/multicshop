@@ -37,7 +37,6 @@ export async function middleware(req: NextRequest) {
     if (subdomain) {
         try {
             // Use fetch to verify if the subdomain exists
-            // const response = await fetch(`${url.origin}/api/tenant?subdomain=${subdomain}`);
             const response = await fetch(`${SERVER_URL}/tenant?subdomain=${subdomain}`);
             
             if (response.ok) {
