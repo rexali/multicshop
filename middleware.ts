@@ -76,7 +76,7 @@
 
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import TenantModel from './app/lib/model.tenant';
+import { SERVER_URL } from './constants/url';
 
 export const config = {
     matcher: [
@@ -113,8 +113,9 @@ export async function middleware(req: NextRequest) {
     if (subdomain) {
         try {
             // Use fetch to verify if the subdomain exists
-            const response = await fetch(`${url.origin}/api/tenant?subdomain=${subdomain}`);
-
+            // const response = await fetch(`${url.origin}/api/tenant?subdomain=${subdomain}`);
+            const response = await fetch(`${SERVER_URL}/tenant?subdomain=${subdomain}`);
+            
             if (response.ok) {
                 console.log('Middleware: Valid subdomain detected, rewriting URL');
                 // Rewrite the URL to a dynamic route based on the subdomain
