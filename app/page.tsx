@@ -29,10 +29,10 @@ import { getInitialDataAPI } from './api/getInitialDataAPI';
 export default async function AppPage({ params }: { params: Promise<{ subdomain?: string }> }) {
   let data: any = {};
   try {
-    let { subdomain } = await params;
-    data = await getInitialDataAPI(subdomain);
-  } catch (error) {
-    return <Fallback item={'Error! Failed to load'} />
+    const paramsValue = await params;
+    data = await getInitialDataAPI(paramsValue.subdomain ?? "maindomain");
+  } catch (error: any) {
+    return <Fallback item={`Error! ${error.message}`} />
   }
 
   if (!Object.keys(data).length) {
@@ -47,60 +47,60 @@ export default async function AppPage({ params }: { params: Promise<{ subdomain?
         <ProductCategories categoryData={data?.categoryData} />
         <MarketingMessage /> <br />
         <Grid container rowSpacing={1} columnSpacing={4}>
-          <Grid sx={{ display: { xs: 'none', md:'block', lg:'block' } }} item xs={12} sm={12} md={2} lg={2}>
+          <Grid sx={{ display: { xs: 'none', md: 'block', lg: 'block' } }} item xs={12} sm={12} md={2} lg={2}>
             <SidebarProductCategories categoryData={data?.categoryData} />
           </Grid>
           <Grid item xs={12} sm={12} md={10} lg={10}>
-              <Box>
-                <Box marginTop={2} display={"flex"} flexDirection={'row'} justifyContent={'space-between'} >
-                  <span>Featured</span>
-                  <Link
-                    style={{ textDecoration: "none", color: 'green', borderColor: 'green' }}
-                    type="button"
-                    color="success"
-                    href={`/products`}
-                  >
-                    View all
-                  </Link>
-                </Box>
-                <FeaturedProductList products={data?.featuredData} />
+            <Box>
+              <Box marginTop={2} display={"flex"} flexDirection={'row'} justifyContent={'space-between'} >
+                <span>Featured</span>
+                <Link
+                  style={{ textDecoration: "none", color: 'green', borderColor: 'green' }}
+                  type="button"
+                  color="success"
+                  href={`/products`}
+                >
+                  View all
+                </Link>
+              </Box>
+              <FeaturedProductList products={data?.featuredData} />
 
-                <Box marginTop={2} display={"flex"} flexDirection={'row'} justifyContent={'space-between'} >
-                  <span>Popular</span>
-                  <Link
-                    style={{ textDecoration: "none", color: 'green', borderColor: 'green' }}
-                    type="button"
-                    color="success"
-                    href={`/products`}
-                  >
-                    View all
-                  </Link>
-                </Box>
-                <PopularProductList products={data?.popularData} />
-                <Box marginTop={2} display={"flex"} flexDirection={'row'} justifyContent={'space-between'} >
-                  <span>Recommeded</span>
-                  <Link
-                    style={{ textDecoration: "none", color: 'green', borderColor: 'green' }}
-                    type="button"
-                    color="success"
-                    href={`/products`}
-                  >
-                    View all
-                  </Link>
-                </Box>
-                <RecommendedProductList products={data?.recommendedData} />
-                <Box marginTop={2} display={"flex"} flexDirection={'row'} justifyContent={'space-between'} >
-                  <span>New</span>
-                  <Link
-                    style={{ textDecoration: "none", color: 'green', borderColor: 'green' }}
-                    type="button"
-                    color="success"
-                    href={`/products`}
-                  >
-                    View all
-                  </Link>
-                </Box>
-                <NewProductList products={data?.productData} />
+              <Box marginTop={2} display={"flex"} flexDirection={'row'} justifyContent={'space-between'} >
+                <span>Popular</span>
+                <Link
+                  style={{ textDecoration: "none", color: 'green', borderColor: 'green' }}
+                  type="button"
+                  color="success"
+                  href={`/products`}
+                >
+                  View all
+                </Link>
+              </Box>
+              <PopularProductList products={data?.popularData} />
+              <Box marginTop={2} display={"flex"} flexDirection={'row'} justifyContent={'space-between'} >
+                <span>Recommeded</span>
+                <Link
+                  style={{ textDecoration: "none", color: 'green', borderColor: 'green' }}
+                  type="button"
+                  color="success"
+                  href={`/products`}
+                >
+                  View all
+                </Link>
+              </Box>
+              <RecommendedProductList products={data?.recommendedData} />
+              <Box marginTop={2} display={"flex"} flexDirection={'row'} justifyContent={'space-between'} >
+                <span>New</span>
+                <Link
+                  style={{ textDecoration: "none", color: 'green', borderColor: 'green' }}
+                  type="button"
+                  color="success"
+                  href={`/products`}
+                >
+                  View all
+                </Link>
+              </Box>
+              <NewProductList products={data?.productData} />
             </Box>
           </Grid>
         </Grid>

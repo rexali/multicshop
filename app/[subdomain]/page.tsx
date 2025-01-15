@@ -30,7 +30,7 @@ export default async function SubdomainPage({ params }: { params: Promise<{ subd
     } catch (error) {
         console.error('SubdomainPage: Error fetching tenant:', error)
         return (
-            <Box marginTop={2} padding={2} display={"flex"} justifyContent={'center'}>
+            <Box marginTop={2} padding={2} display={"flex"} alignItems={'center'} justifyContent={'center'}>
                 <h1 className="text-4xl font-bold text-red-500">Error</h1>
                 <p>There was an error loading the tenant information.</p>
                 <pre>{JSON.stringify(error, null, 2)}</pre>

@@ -7,22 +7,18 @@ const nextConfig = {
         // your project has ESLint errors.
         ignoreDuringBuilds: true,
     },
-    async rewrites() {
-        return [
-            // {
-            //     source: "/(./*)",
-            //     destination: "/"
-            // },
-            {
-                source: '/:path*',
-                destination: '/:path*',
-            },
-            {
-                source: '/',
-                destination: '/api/tenant',
-            },
-        ]
-    },
+    // async rewrites() {
+    //     return [
+    //         {
+    //             source: '/:path*',
+    //             destination: '/:path*',
+    //         },
+    //         {
+    //             source: '/',
+    //             destination: '/api/tenant',
+    //         },
+    //     ]
+    // },
     images: {
         remotePatterns: [
             {
