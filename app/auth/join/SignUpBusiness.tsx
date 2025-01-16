@@ -37,13 +37,11 @@ export default function SignUpBusiness() {
 
     const handleSubmit = async (event: any) => {
         if (isAvailable) {
-            setLoading('Sending data..');
             handleSignUpSubmit(event, setError, setSuccess, setLoading, router, subdomain)
         } else {
             setIsAvailable(false);
         }
     }
-
 
     const isSubdomainAvailable = async (subdomain: string) => {
         const { data } = await axios.get(`${SERVER_URL}/auth?subdomain=${subdomain}`);

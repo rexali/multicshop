@@ -19,15 +19,16 @@ export const handleSignUpSubmit = (
 ) => {
     // prevent default behaviour
     event.preventDefault();
+    setLoading('Sending data..');
     // get user data
-    const { 
-        first_name, 
-        last_name, 
-        email, 
-        password, 
-        confirm_password, 
+    const {
+        first_name,
+        last_name,
+        email,
+        password,
+        confirm_password,
         remember_me,
-        business_name 
+        business_name
     } = event.target.elements;
     //   check if user password and confirm password before posting user data   
     if (password.value === confirm_password.value) {

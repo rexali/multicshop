@@ -18,7 +18,6 @@ import FeaturedProductList from './products/FeaturedProductList';
 import PopularProductList from './products/PopularProductList';
 import NewProductList from './products/NewProductList';
 import RecommendedProductList from './products/RecommendedProductList';
-import HomeFallback from '../components/common/HomeFallback';
 import Fallback from '../components/common/fallback';
 import { Grid } from '@mui/material';
 import { Toaster } from 'sonner';
