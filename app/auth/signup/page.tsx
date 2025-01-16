@@ -30,7 +30,6 @@ export default function SignUp() {
     const router = useRouter();
 
     const handleSubmit = async (event: any) => {
-        setLoading('Sending data..');
         handleSignUpSubmit(event, setError, setSuccess, setLoading, router)
     }
 

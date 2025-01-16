@@ -1,6 +1,6 @@
 'use client'
 
-import { BASE_URL, SERVER_URL } from "../../../constants/url";
+import { SERVER_URL } from "../../../constants/url";
 
 /**
  * Register a new user
@@ -17,8 +17,8 @@ export async function signUpAPI(
     email: any,
     password: any,
     remember_me?: any,
-    subdomain?:any,
-    businessName?:any
+    subdomain?: any,
+    businessName?: any
 ) {
 
     try {
@@ -32,13 +32,13 @@ export async function signUpAPI(
             },
             // convert the body or data to json string
             body: JSON.stringify({
-                firstName,
-                lastName,
-                email,
-                password,
-                remember_me,
-                subdomain,
-                businessName
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                password: password,
+                remember_me: remember_me,
+                subdomain: subdomain,
+                businessName: businessName
             }),
         });
         // wait for registration result

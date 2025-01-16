@@ -19,7 +19,6 @@ export const handleSignUpSubmit = (
 ) => {
     // prevent default behaviour
     event.preventDefault();
-    setLoading('Sending data..');
     // get user data
     const {
         first_name,
@@ -29,11 +28,12 @@ export const handleSignUpSubmit = (
         confirm_password,
         remember_me,
         business_name,
-        subdomain
     } = event.target.elements;
     //   check if user password and confirm password before posting user data 
-    // let subdomainx = event.target.elements?.subdomain?.value ?? subdomain
+    let subdomainx = event.target.elements.subdomain?.value ?? domain;
+
     if (password.value === confirm_password.value) {
+        setLoading('Sending data..');
         // call handleSignUp method and collect user data
         signUpAPI(
             first_name.value,
@@ -41,7 +41,7 @@ export const handleSignUpSubmit = (
             email.value,
             password.value,
             remember_me.value,
-            subdomain.value ?? domain,
+            subdomainx,
             business_name.value,
         ).then(((result) => {
             if (result.status === "success") {
@@ -52,12 +52,17 @@ export const handleSignUpSubmit = (
                 setTimeout(() => {
                     router.replace('/auth/signin');
                 }, 5000)
-                
+
             } else {
                 // send failure message
                 setLoading('');
                 setSignUpError('');
                 setSignUpSuccess(result.status);
+                setTimeout(() => {
+                    setSignUpError('');
+                    setSignUpSuccess('');
+                    setLoading('');
+                }, 10000)
             }
         })).catch((err) => {
             // log error message
