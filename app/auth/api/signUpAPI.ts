@@ -23,7 +23,7 @@ export async function signUpAPI(
 
     try {
         // fetch a data with method and mode set
-        const resp = await fetch(SERVER_URL + "/auth/register", {
+        const resp = await fetch(`${SERVER_URL}/auth/register`, {
             method: 'POST',
             mode: "cors",
             // set content type and authorization headers

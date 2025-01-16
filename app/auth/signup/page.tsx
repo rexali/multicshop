@@ -34,8 +34,6 @@ export default function SignUp() {
         handleSignUpSubmit(event, setError, setSuccess, setLoading, router)
     }
 
-
-
     return (
         <ThemeProvider theme={defaultTheme}>
             <Container component="main" maxWidth="xs">

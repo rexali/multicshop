@@ -41,15 +41,18 @@ export const handleSignUpSubmit = (
             email.value,
             password.value,
             remember_me.value,
+            subdomain.value ?? domain,
             business_name.value,
-            subdomain?.value ?? domain
         ).then(((result) => {
             if (result.status === "success") {
                 // send success message
                 setLoading('');
                 setSignUpError('');
-                setSignUpSuccess(result.status + '. You can sign in now');
-                router.replace('/auth/signin');
+                setSignUpSuccess(result.status + '. Sign in now');
+                setTimeout(() => {
+                    router.replace('/auth/signin');
+                }, 5000)
+                
             } else {
                 // send failure message
                 setLoading('');
@@ -72,6 +75,11 @@ export const handleSignUpSubmit = (
     } else {
         setSignUpError('Password and confirm password mismatch');
         setSignUpSuccess('');
+        setTimeout(() => {
+            setSignUpError('');
+            setSignUpSuccess('');
+            setLoading('');
+        }, 20000)
     }
 
 }
