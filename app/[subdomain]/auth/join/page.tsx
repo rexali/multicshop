@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "../../products/styles/styles.css"
+import "../../../products/styles/styles.css"
 import SignIn from "../../../auth/signin/page";
 import SignUp from "../../../auth/signup/page";
 

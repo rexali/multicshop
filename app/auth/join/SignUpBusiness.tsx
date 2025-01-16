@@ -39,6 +39,7 @@ export default function SignUpBusiness() {
         if (isAvailable) {
             handleSignUpSubmit(event, setError, setSuccess, setLoading, router, subdomain)
         } else {
+            event.preventDefault();
             setIsAvailable(false);
         }
     }
@@ -46,11 +47,11 @@ export default function SignUpBusiness() {
     const isSubdomainAvailable = async (subdomain: string) => {
         const { data } = await axios.get(`${SERVER_URL}/auth?subdomain=${subdomain}`);
         if (data.status === "success" && data.data.result) {
-            setIsAvailable(true);
-            // return true;
-        } else {
             setIsAvailable(false);
             // return false;
+        } else {
+            setIsAvailable(true);
+            // return true;
         }
     }
 
@@ -124,7 +125,6 @@ export default function SignUpBusiness() {
                                     onChange={handleSetSubdomain}
                                 />
                                 <TextField size='small' fullWidth defaultValue={'.siniotech.com.ng'} disabled />
-
 
                                 {isAvailable && isAvailable === true ? <Box sx={{ color: 'green' }}>It is available</Box> : isAvailable === false && <Box sx={{ color: 'red' }}>It is not available</Box>}
                             </Grid>
