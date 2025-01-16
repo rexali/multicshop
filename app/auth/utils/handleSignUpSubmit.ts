@@ -14,7 +14,8 @@ export const handleSignUpSubmit = (
     setSignUpError: any,
     setSignUpSuccess: any,
     setLoading: any,
-    router?: any
+    router?: any,
+    domain: any = 'maindomain'
 ) => {
     // prevent default behaviour
     event.preventDefault();
@@ -30,7 +31,8 @@ export const handleSignUpSubmit = (
         business_name,
         subdomain
     } = event.target.elements;
-    //   check if user password and confirm password before posting user data   
+    //   check if user password and confirm password before posting user data 
+    // let subdomainx = event.target.elements?.subdomain?.value ?? subdomain
     if (password.value === confirm_password.value) {
         // call handleSignUp method and collect user data
         signUpAPI(
@@ -40,7 +42,7 @@ export const handleSignUpSubmit = (
             password.value,
             remember_me.value,
             business_name.value,
-            subdomain.value
+            subdomain?.value ?? domain
         ).then(((result) => {
             if (result.status === "success") {
                 // send success message
