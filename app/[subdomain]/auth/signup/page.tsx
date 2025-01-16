@@ -31,7 +31,7 @@ export default async function SubSignUpPage(props: any) {
     const router = useRouter();
     const { subdomain } = useParams();
 
-    const handleSubmit = async (event: any) => {
+    const handleSubmit = (event: any) => {
         setLoading('Sending data..');
         handleSignUpSubmit(event, setError, setSuccess, setLoading, router, subdomain)
     };

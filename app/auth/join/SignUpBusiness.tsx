@@ -35,7 +35,7 @@ export default function SignUpBusiness() {
     const router = useRouter();
     const [isAvailable, setIsAvailable] = React.useState<any>();
 
-    const handleSubmit = async (event: any) => {
+    const handleSubmit = (event: any) => {
         if (isAvailable) {
             handleSignUpSubmit(event, setError, setSuccess, setLoading, router)
         } else {
