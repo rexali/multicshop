@@ -14,8 +14,7 @@ export const handleSignUpSubmit = (
     setSignUpError: any,
     setSignUpSuccess: any,
     setLoading: any,
-    router?: any,
-    subdomain?: any
+    router?: any
 ) => {
     // prevent default behaviour
     event.preventDefault();
@@ -28,7 +27,8 @@ export const handleSignUpSubmit = (
         password,
         confirm_password,
         remember_me,
-        business_name
+        business_name,
+        subdomain
     } = event.target.elements;
     //   check if user password and confirm password before posting user data   
     if (password.value === confirm_password.value) {
@@ -40,7 +40,7 @@ export const handleSignUpSubmit = (
             password.value,
             remember_me.value,
             business_name.value,
-            subdomain
+            subdomain.value
         ).then(((result) => {
             if (result.status === "success") {
                 // send success message

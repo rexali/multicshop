@@ -37,7 +37,7 @@ export default function SignUpBusiness() {
 
     const handleSubmit = async (event: any) => {
         if (isAvailable) {
-            handleSignUpSubmit(event, setError, setSuccess, setLoading, router, subdomain)
+            handleSignUpSubmit(event, setError, setSuccess, setLoading, router)
         } else {
             event.preventDefault();
             setIsAvailable(false);
