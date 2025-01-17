@@ -11,13 +11,12 @@ import { SERVER_URL } from "../../../constants/url";
  * @param remember_me : remember user next time
  * @returns a booleen value
  */
-export async function signUpAPI(
-    firstName: any,
-    lastName: any,
+export async function signUpBusinessAPI(
+    businessName: any,
+    subdomain: any,
     email: any,
     password: any,
-    remember_me?: any,
-    subdomain?: any
+    remember_me?: any
 ) {
 
     try {
@@ -31,12 +30,11 @@ export async function signUpAPI(
             },
             // convert the body or data to json string
             body: JSON.stringify({
-                firstName: firstName,
-                lastName: lastName,
                 email: email,
                 password: password,
                 remember_me: remember_me,
-                subdomain: subdomain
+                subdomain: subdomain,
+                businessName: businessName
             }),
         });
         // wait for registration result

@@ -1,6 +1,7 @@
 'use client'
 
 import { signUpAPI } from "../api/signUpAPI";
+import { signUpBusinessAPI } from "../api/signUpBusinessAPI";
 
 /**
  * 
@@ -9,37 +10,34 @@ import { signUpAPI } from "../api/signUpAPI";
  * @param setSignUpSuccess : a success callback
  * @param url : a given
  */
-export const handleSignUpSubmit = (
+export const handleSignUpBusinessSubmit = (
     event: any,
     setSignUpError: any,
     setSignUpSuccess: any,
     setLoading: any,
-    router?: any,
-    subdomain: any = 'maindomain'
+    router?: any
 ) => {
     // prevent default behaviour
     event.preventDefault();
     // get user data
     const {
-        first_name,
-        last_name,
         email,
         password,
         confirm_password,
-        remember_me
+        remember_me,
+        business_name,
+        subdomain
     } = event.target.elements;
     //   check if user password and confirm password before posting user data 
-
     if (password.value === confirm_password.value) {
         setLoading('Sending data..');
         // call handleSignUp method and collect user data
-        signUpAPI(
-            first_name.value,
-            last_name.value,
+        signUpBusinessAPI(
+            business_name.value,
+            subdomain.value,
             email.value,
             password.value,
             remember_me.value,
-            subdomain
         ).then(((result) => {
             if (result.status === "success") {
                 // send success message
@@ -49,7 +47,6 @@ export const handleSignUpSubmit = (
                 setTimeout(() => {
                     router.replace('/auth/signin');
                 }, 5000)
-
             } else {
                 // send failure message
                 setLoading('');
