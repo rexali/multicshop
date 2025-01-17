@@ -32,7 +32,7 @@ export default function JoinPage(props: any) {
             <div className="tab-content">
                 <div className="tab-pane active" id={tabName}>
                     {tabName === 'signin' ? <SignIn subdomain={subdomain} /> : ''}
-                    {tabName === 'signup' ? <SignUp /> : ''}
+                    {tabName === 'signup' ? <SignUp subdomain={subdomain} /> : ''}
                     {tabName === 'signup-business' ? <SignUpBusiness /> : ''}
 
                 </div>

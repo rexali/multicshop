@@ -3,8 +3,10 @@ import Link from "next/link";
 import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../../../products/styles/styles.css"
-import SignIn from "../../../auth/signin/page";
+// import SignIn from "../../../auth/signin/page";
 import SignUp from "../../../auth/signup/page";
+import SubSignInPage from "../signin/page";
+import SubSignUpPage from "../signup/page";
 
 export default function JoinPage(props: any) {
     const subdomain:string = props?.subdomain ?? ""
@@ -29,8 +31,8 @@ export default function JoinPage(props: any) {
 
             <div className="tab-content">
                 <div className="tab-pane active" id={tabName}>
-                    {tabName === 'signin' ? <SignIn subdomain={subdomain} /> : ''}
-                    {tabName === 'signup' ? <SignUp /> : ''}
+                    {tabName === 'signin' ? <SubSignInPage params={Promise.resolve({subdomain})} /> : ''}
+                    {tabName === 'signup' ? <SubSignUpPage params={Promise.resolve({subdomain})} /> : ''}
                 </div>
             </div>
         </div>

@@ -23,13 +23,14 @@ import { useRouter } from 'next/navigation'
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function SignUp() {
+export default function SignUp(props: any) {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const [loading, setLoading] = React.useState('');
     const router = useRouter();
 
     const handleSubmit = async (event: any) => {
+        const subdomain = props?.subdomain ?? ""
         handleSignUpSubmit(event, setError, setSuccess, setLoading, router)
     }
 

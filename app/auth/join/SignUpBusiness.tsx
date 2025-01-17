@@ -22,6 +22,7 @@ import { useRouter } from 'next/navigation'
 import axios from 'axios';
 import { SERVER_URL } from '../../../constants/url';
 import { useDebouncedCallback } from 'use-debounce';
+import { handleSignUpBusinessSubmit } from '../utils/handleSignUpBusinessSubmit.ts';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
@@ -37,7 +38,7 @@ export default function SignUpBusiness() {
 
     const handleSubmit = (event: any) => {
         if (isAvailable) {
-            handleSignUpSubmit(event, setError, setSuccess, setLoading, router)
+            handleSignUpBusinessSubmit(event, setError, setSuccess, setLoading, router)
         } else {
             event.preventDefault();
             setIsAvailable(false);
@@ -71,8 +72,6 @@ export default function SignUpBusiness() {
         setSubDomain(value.trim().toLowerCase().split(' ').join(''));
         await handleCheckSubdomain(subdomain);
     }
-
-
 
     return (
         <ThemeProvider theme={defaultTheme}>

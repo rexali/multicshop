@@ -43,7 +43,7 @@ export const handleSignUpBusinessSubmit = (
                 // send success message
                 setLoading('');
                 setSignUpError('');
-                setSignUpSuccess(result.status + '. Sign in now');
+                setSignUpSuccess(result.status + '. sign in now');
                 setTimeout(() => {
                     router.replace('/auth/signin');
                 }, 5000)

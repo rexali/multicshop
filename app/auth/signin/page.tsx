@@ -36,7 +36,7 @@ export default function SignIn(props: any) {
     // give user feedback
     setLoading("Sending data...");
     const subdomain = props?.subdomain ?? ""
-    handleLoginSubmit(event, setSuccess, setError, setLoading, router, next, subdomain)
+    handleLoginSubmit(event, setSuccess, setError, setLoading, router, next)
   }
 
   return (
