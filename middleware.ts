@@ -16,7 +16,7 @@ export async function middleware(req: NextRequest) {
     hostname = hostname.split(':')[0];
 
     // Define allowed domains (including main domain and localhost)
-    const allowedDomains = ["siniotech.com.ng","*.siniotech.com.ng", "www.siniotech.com.ng", "multitenantshop.vercel.app", "www.multitenantshop.vercel.app", "localhost"];
+    const allowedDomains = ["siniotech.com.ng","*.siniotech.com.ng", "www.siniotech.com.ng", "sinioshop.com.ng","www.sinioshop.com.ng", "multitenantshop.vercel.app", "www.multitenantshop.vercel.app", "localhost"];
 
     // Check if the current hostname is in the list of allowed domains
     const isMainDomain = allowedDomains.includes(hostname);
@@ -37,7 +37,7 @@ export async function middleware(req: NextRequest) {
     if (subdomain) {
         try {
             // Use fetch to verify if the subdomain exists
-            const response = await fetch(`${SERVER_URL}/tenant?subdomain=${subdomain}`);
+            const response = await fetch(`${SERVER_URL}/auth?subdomain=${subdomain}`);
             
             if (response.ok) {
                 console.log('Middleware: Valid subdomain detected, rewriting URL');
