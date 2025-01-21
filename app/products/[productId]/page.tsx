@@ -31,7 +31,7 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function ProductDetailPage({ params }: { params: Promise<{ productId: string, subdomain?:string }> }) {
+export default async function ProductDetailPage({ params }: { params: Promise<{ productId: string, subdomain?: string }> }) {
   let { productId } = await params;
   const product = await getProductAPI(productId) ?? {};
   const photos = [
@@ -122,7 +122,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                 {product.product_description ?? "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica"}
               </Typography>
             </Grid>
-            <Grid item xs={12} md={12}>
+            <Grid item xs={12} md={6}>
               <Typography gutterBottom variant="h5" component="div">
                 Shipping Info:
               </Typography>
@@ -130,7 +130,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                 {"We will take care of the shipping of the item and its return in case  of any damages (to the item and you wish to return) during transit"}
               </Typography>
             </Grid>
-            <Grid item xs={12} md={12}>
+            <Grid item xs={12} md={6}>
               <Typography gutterBottom variant="h5" component="div">
                 Payment Method(s):
               </Typography>
@@ -146,7 +146,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
               </Typography>
             </Grid>
 
-            <Grid item xs={12} md={12}>
+            <Grid item xs={12} md={6}>
               <Typography gutterBottom variant="h5" component="div">
                 Product Demo:
               </Typography>
@@ -157,7 +157,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
               </Typography>
             </Grid>
             {/* Add multiple and scrollable images here using carousel or scrollmenu */}
-            <Grid item xs={12} md={12}>
+            <Grid item xs={12} md={6}>
               <Typography gutterBottom variant="h5" component="div">
                 Other Photo(s):
               </Typography>

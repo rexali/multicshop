@@ -18,6 +18,7 @@ import { useAuth } from '../../hooks/use-auth';
 import { getToken } from '../../utils/getToken';
 import { useRouter } from 'next/navigation';
 import { useMediaQuery } from "react-responsive";
+import Grid from '@mui/material/Grid';
 
 export default function ContactPage() {
   const [error, setError] = React.useState('');
@@ -51,111 +52,78 @@ export default function ContactPage() {
       <Typography component="h1" variant="h5" textAlign={'center'}>
         Contact us
       </Typography>
-      <Box component={'div'} textAlign={'center'} ml={'auto'} mr={'auto'}>
-        <Button
-          type='button'
-          size="large"
-          fullWidth
-          variant="contained"
-          color='success'
-          sx={{ p: 2, mt: 3, mb: 2, display: 'block' }}
-          key={'share'}
-          onClick={() => shareLink()}
-          startIcon={<Share sx={{ color: "white" }}
-          />}>Share this</Button>
-        <Button
-          type='button'
-          size="large"
-          fullWidth
-          variant="contained"
-          color='success'
-          sx={{ p: 2, mt: 3, mb: 2, display: 'block' }}
-          key={"email"}
-          href="mailto:alybaba2009@gmail.com"
-          startIcon={<Email sx={{ color: "white" }}
-          />}>Email us</Button>
-        <Button
-          type='button'
-          size="large"
-          fullWidth
-          variant="contained"
-          color='success'
-          sx={{ p: 2, mt: 3, mb: 2, display: 'block' }}
-          key={"tel"} href="tel:08065899144"
-          startIcon={<Phone sx={{ color: "white" }}
-          />}>Call us</Button>
-        <Button
-          type='button'
-          size="large"
-          fullWidth
-          variant="contained"
-          color='success'
-          sx={{ p: 2, mt: 3, mb: 2, display: 'block' }}
-          key={"loc"}
-          href="http://maps.google.com/?q=19 Almubarak Waqf Foundation, Guda Abdullahi Road, Farm Center, Kano State"
-          startIcon={<Place sx={{ color: "white" }}
-          />}>Locate us</Button>
-      </Box><br />
-
-      <Box>Or</Box><br />
 
       <Box
         component={'form'}
         onSubmit={handleSubmit}
         noValidate={false}
       >
-        {!isMobile && < TextField
-          margin="normal"
-          required
-          fullWidth
-          id="email"
-          label="Email Address"
-          name="email"
-          type='email'
-          autoComplete="email"
-          autoFocus
-        />}
+        <Grid container rowSpacing={1} columnSpacing={4}>
+          <Grid item xs={12} sm={12} md={6} lg={6}>
+            {!isMobile && < TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              type='email'
+              autoComplete="email"
+              autoFocus
+            />}
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={6}>
+            {!isMobile && <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="firstName"
+              label="First Name"
+              type="default"
+              id="firstName"
+            />
+            }
+          </Grid>
 
-        {!isMobile && <TextField
-          margin="normal"
-          required
-          fullWidth
-          name="firstName"
-          label="First Name"
-          type="default"
-          id="firstName"
-        />
-        }
-        {!isMobile && <TextField
-          margin="normal"
-          required
-          fullWidth
-          name="lastName"
-          label="Last Name"
-          type="default"
-          id="lastName"
-        />
-        }
-        <TextField
-          margin="normal"
-          required
-          fullWidth
-          name="title"
-          label="Subject"
-          type="default"
-          id="title"
-        />
+          <Grid item xs={12} sm={12} md={6} lg={6}>
+            {!isMobile && <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="lastName"
+              label="Last Name"
+              type="default"
+              id="lastName"
+            />
+            }
+          </Grid>
 
-        <TextField
-          margin="normal"
-          required
-          fullWidth
-          name="comment"
-          label="Message"
-          type='default'
-          id="comment"
-          multiline
-        />
+          <Grid item xs={12} sm={12} md={6} lg={6}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="title"
+              label="Subject"
+              type="default"
+              id="title"
+            />
+          </Grid>
+
+          <Grid item xs={12} sm={12} md={12} lg={12}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="comment"
+              label="Message"
+              type='default'
+              id="comment"
+              multiline
+            />
+          </Grid>
+        </Grid>
+
         {success && <Box textAlign={"center"} sx={{ color: "green" }}>{success.toUpperCase()}</Box>}
         {error && <Box textAlign={"center"} sx={{ color: "red" }}>{error.toUpperCase()}</Box>}
         {loading && <Box textAlign={"center"} sx={{ color: "green" }}>{loading.toUpperCase()}</Box>}
