@@ -29,7 +29,6 @@ export default async function OrderPage({ params }: { params: Promise<{ orderId:
         console.warn(error);
     }
 
-
     if (!Object.keys(order).length) {
 
         return (
@@ -38,7 +37,6 @@ export default async function OrderPage({ params }: { params: Promise<{ orderId:
             </Container>
         )
     }
-
 
     return (
         <Container sx={{ mt: 8 }} component={"main"} maxWidth="lg">

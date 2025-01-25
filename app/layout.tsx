@@ -9,6 +9,7 @@ import { AppProvider } from '../context/AppContext';
 import HomeFallback from '../components/common/HomeFallback';
 import { getInitialDataAPI } from './api/getInitialDataAPI';
 import type { Viewport } from 'next'
+import { createTheme, ThemeProvider } from '@mui/material';
 
 export const metadata: Metadata = {
   title: { absolute: "Cshop", template: "%s | a marketplace or an ecommerce" },
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: 'black',
+  themeColor: 'green',
   width: "device-width",
   initialScale: 1.0
 }
@@ -28,6 +29,18 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
 
+  const lightTheme = createTheme({
+    palette: {
+      mode: 'light',
+      primary: {
+        main: '#fof8ff'
+      },
+      secondary: {
+        main: '#00acc1'
+      }
+    }
+  });
+
   let initialData = await getInitialDataAPI() ?? {};
 
   return (
@@ -36,14 +49,15 @@ export default async function RootLayout({
         <AuthProvider>
           <AppProvider>
             <React.Suspense fallback={<HomeFallback />}>
-              <NavBar categoryData={initialData?.categoryData} />
-              {children}
+              <ThemeProvider theme={lightTheme}>
+                <NavBar categoryData={initialData?.categoryData} />
+                {children}
+              </ThemeProvider>
               <BottomNavigation />
               <BottomNavbar />
             </React.Suspense>
           </AppProvider>
         </AuthProvider>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js" async></script>
       </body>
     </html>
   );

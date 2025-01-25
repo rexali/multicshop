@@ -25,19 +25,6 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import CardImage from '../../app/products/components/CardImage';
 import ErrorBoundary from '../ErrorBoundary';
 import SearchInput from '../../app/search/SearchInput';
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-
-const lightTheme = createTheme({
-  palette: {
-    mode: 'light',
-    primary:{
-      main:'#fof8ff'
-    },
-    secondary:{
-      main:'#00acc1'
-    }
-  }
-})
 
 const pages = [
   'About',
@@ -112,7 +99,6 @@ function NavBar(props: any) {
 
   return (
     <ErrorBoundary>
-      <ThemeProvider theme={lightTheme}>
         <CssBaseline />
         <AppBar position={isMobile ? "fixed" : "static"} >
           <Container maxWidth={"xl"}>
@@ -130,7 +116,7 @@ function NavBar(props: any) {
                   fontWeight: 700,
                 }}
               >
-                Sinioshop
+                cshop
               </Link>
               <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                 <IconButton
@@ -188,7 +174,7 @@ function NavBar(props: any) {
                   letterSpacing: '.1rem',
                   color: 'inherit',
                 }}>
-                Sinioshop
+                cshop
               </Link>
               <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                 {pages.map((page, index) => (<Link
@@ -293,7 +279,6 @@ function NavBar(props: any) {
             </Toolbar>
           </Container>
         </AppBar>
-      </ThemeProvider>
     </ErrorBoundary>
   )
 }

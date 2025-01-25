@@ -26,6 +26,7 @@ import { SidebarProductCategories } from './products/SidebarProductCategories';
 import { getInitialDataAPI } from './api/getInitialDataAPI';
 
 export default async function AppPage({ params }: { params: Promise<{ subdomain?: string }> }) {
+
   let data: any = {};
   try {
     const paramsValue = await params;
