@@ -29,18 +29,6 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
 
-  const lightTheme = createTheme({
-    palette: {
-      mode: 'light',
-      primary: {
-        main: '#fof8ff'
-      },
-      secondary: {
-        main: '#00acc1'
-      }
-    }
-  });
-
   let initialData = await getInitialDataAPI() ?? {};
 
   return (
@@ -49,10 +37,8 @@ export default async function RootLayout({
         <AuthProvider>
           <AppProvider>
             <React.Suspense fallback={<HomeFallback />}>
-              <ThemeProvider theme={lightTheme}>
                 <NavBar categoryData={initialData?.categoryData} />
                 {children}
-              </ThemeProvider>
               <BottomNavigation />
               <BottomNavbar />
             </React.Suspense>

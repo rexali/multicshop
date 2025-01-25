@@ -2,7 +2,7 @@
 
 import React from "react"
 import Box from '@mui/material/Box';
-import Grid from '@mui/material/Unstable_Grid2';
+import Grid from '@mui/material/Grid';
 import Container from "@mui/material/Container";
 import Link from "next/link";
 
@@ -19,7 +19,7 @@ export default function BottomNavigation() {
         "Terms and Conditions"
     ];
 
-    const renderGridItems = pages.map((page, index) => (<Grid xs={12} md={6} sx={{ textAlign: "center" }} key={index}>
+    const renderGridItems = pages.map((page, index) => (<Grid item xs={4} md={4} sx={{ textAlign: "center" }} key={index}>
         <Link
             type="button"
             color="success"

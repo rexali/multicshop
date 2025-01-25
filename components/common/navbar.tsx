@@ -16,7 +16,7 @@ import Cart from '@mui/icons-material/ShoppingCart';
 import { handleSignOut } from '../../app/auth/utils/handleSignOut';
 import Link from 'next/link';
 import { SERVER_URL } from '../../constants/url';
-import { Avatar, Button, CssBaseline } from '@mui/material';
+import { Avatar, Button, createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import { AppContext } from '../../context/AppContext';
 import Notifications from '@mui/icons-material/Notifications';
 import Message from '@mui/icons-material/Message';
@@ -37,6 +37,19 @@ const menus = [
   'Messages',
   'Notifications'
 ];
+
+
+const lightTheme = createTheme({
+  palette: {
+    mode: 'light',
+    primary: {
+      main: '#fof8ff'
+    },
+    secondary: {
+      main: '#00acc1'
+    }
+  }
+});
 
 function NavBar(props: any) {
 
@@ -95,11 +108,10 @@ function NavBar(props: any) {
     }
   }
 
-
-
   return (
     <ErrorBoundary>
-        <CssBaseline />
+      <CssBaseline />
+      <ThemeProvider theme={lightTheme}>
         <AppBar position={isMobile ? "fixed" : "static"} >
           <Container maxWidth={"xl"}>
             <Toolbar disableGutters>
@@ -279,6 +291,7 @@ function NavBar(props: any) {
             </Toolbar>
           </Container>
         </AppBar>
+      </ThemeProvider>
     </ErrorBoundary>
   )
 }
