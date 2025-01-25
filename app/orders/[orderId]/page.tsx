@@ -1,4 +1,4 @@
-import { getOrderAPI } from "../../../app/admins/api/getOrderAPI";
+import { getOrderAPI } from "../../../app/supadmins/api/getOrderAPI";
 import { SERVER_URL } from "../../../constants/url";
 import { CardContent, Box, Typography, Container } from "@mui/material";
 import Card from "@mui/material/Card";

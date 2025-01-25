@@ -9,7 +9,7 @@ import { useAuth } from "../../hooks/use-auth";
 import { getUserOrdersAPI } from "../users/api/getUserOrders";
 import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Button } from "@mui/material";
 import Link from "next/link";
-import { orderStatusAPI } from "../admins/api/orderStatusAPI";
+import { orderStatusAPI } from "../supadmins/api/orderStatusAPI";
 
 export default function UserOrders(props:any) {
   const [data, setData] = React.useState<any>([]);
