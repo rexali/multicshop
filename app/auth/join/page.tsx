@@ -17,12 +17,11 @@ export default function JoinPage(props: any) {
     const styles = {
         navTabs: { fontSize: 'small' },
         minheight: { minHeight: 420 },
-        marginTop: { marginTop: 60 }
+        marginTop: { marginTop: 80 }
     }
 
     return (
-        <div className="container" style={styles.minheight}>
-            
+        <div className="container" style={styles.minheight}>   
             <div className="scrollmenu" style={styles.marginTop}>
                 <Link style={styles.navTabs} data-toggle="tab" onClick={() => openTab('signin')} href={""} ><small>Sign in</small></Link>
                 <Link style={styles.navTabs} data-toggle="tab" onClick={() => openTab('signup')} href={""} ><small>Register</small></Link>
@@ -34,7 +33,6 @@ export default function JoinPage(props: any) {
                     {tabName === 'signin' ? <SignIn subdomain={subdomain} /> : ''}
                     {tabName === 'signup' ? <SignUp subdomain={subdomain} /> : ''}
                     {tabName === 'signup-business' ? <SignUpBusiness /> : ''}
-
                 </div>
             </div>
         </div>
