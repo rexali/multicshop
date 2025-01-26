@@ -1,5 +1,5 @@
 
-import React, { Fragment, useCallback } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import MarketingMessage from './MarketingMessage';
 import FAQHowItWorks from './FAQHowItWorks';
@@ -30,9 +30,9 @@ import { getInitialData } from '../store/actions/app-actions';
 export default function AppPage(props: any) {
 
   const subdomain = props.subdomain ?? "maindomain"
-  const [data, setData] = React.useState<any>({});
-  const [error, setError] = React.useState<any>({});
-  const { dispatch } = React.useContext(AppContext)
+  const [data, setData] = useState<any>({});
+  const [error, setError] = useState<any>({});
+  const { dispatch } = useContext(AppContext)
 
   const getData = useCallback(async () => {
     try {
