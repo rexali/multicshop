@@ -21,7 +21,7 @@ import { AppContext } from '../../context/AppContext';
 import Notifications from '@mui/icons-material/Notifications';
 import Message from '@mui/icons-material/Message';
 import { useAuth } from '../../hooks/use-auth';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useParams, usePathname, useRouter, useSearchParams } from 'next/navigation';
 import CardImage from '../../app/products/components/CardImage';
 import ErrorBoundary from '../ErrorBoundary';
 import SearchInput from '../../app/search/SearchInput';
@@ -97,6 +97,8 @@ function NavBar(props: any) {
 
   const searchParams = useSearchParams() as any;
   const pathname = usePathname();
+  const params = useParams();
+  const title = params.subdomain === 'maindomain' || "" || undefined ? 'cshop' : params.subdomain;
 
   function goToNextPage() {
     if (user?._id) {
@@ -128,7 +130,7 @@ function NavBar(props: any) {
                   fontWeight: 700,
                 }}
               >
-                cshop
+                {title}
               </Link>
               <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                 <IconButton
@@ -186,7 +188,7 @@ function NavBar(props: any) {
                   letterSpacing: '.1rem',
                   color: 'inherit',
                 }}>
-                cshop
+                {title}
               </Link>
               <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                 {pages.map((page, index) => (<Link
