@@ -97,8 +97,8 @@ function NavBar(props: any) {
 
   const searchParams = useSearchParams() as any;
   const pathname = usePathname();
-  const params = useParams();
-  const title = (params?.subdomain === 'maindomain' || "" || undefined || null) ? 'cshop' : params.subdomain;
+  const params:any = useParams();
+  const title = !params?.subdomain.trim() ? 'cshop' : params.subdomain;
 
   function goToNextPage() {
     if (user?._id) {
