@@ -1,3 +1,4 @@
+'use client';
 
 import React, { useCallback, useContext, useState } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
