@@ -54,6 +54,11 @@ const reducer = (state: any, action: any) => {
         messages: action.payload
       };
 
+    case ActionTypes.GET_INITIAL_DATA:
+      return {
+        ...state,
+        initialData: action.payload
+      };
 
     default:
       return state;

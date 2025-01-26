@@ -90,10 +90,10 @@ function NavBar(props: any) {
   };
 
   const isMobile = useMediaQuery({ maxDeviceWidth: 1023 });
-  let categoryData = props?.categoryData ?? [];
+  // let categoryData = props?.categoryData ?? [];
+  let categoryData = state?.initialData?.categoryData ?? [];
   let categories = categoryData.map((categoryData: { product_category: any; }) => categoryData.product_category)
   const categoriex = Array.from(new Set(categories));
-
 
   const searchParams = useSearchParams() as any;
   const pathname = usePathname();

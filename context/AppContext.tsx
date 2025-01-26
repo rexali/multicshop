@@ -9,6 +9,7 @@ const initialState = {
     messages: [],
     favourites: [],
     notifications: [],
+    initialData:{},
     result: {},
 };
 

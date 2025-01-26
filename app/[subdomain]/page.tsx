@@ -7,7 +7,7 @@ export default async function SubdomainPage({ params }: { params: Promise<{ subd
         const { subdomain } = await params;
         console.log('SubdomainPage: Rendering page for subdomain:', subdomain)
 
-        return <AppPage params={Promise.resolve({ subdomain })} />
+        return <AppPage subdomain={subdomain} />
     } catch (error: any) {
         console.error('SubdomainPage: Error fetching tenant:', error);
 

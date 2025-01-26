@@ -7,9 +7,7 @@ import AuthProvider from '../context/AuthContext';
 import { Metadata } from "next";
 import { AppProvider } from '../context/AppContext';
 import HomeFallback from '../components/common/HomeFallback';
-import { getInitialDataAPI } from './api/getInitialDataAPI';
 import type { Viewport } from 'next'
-import { createTheme, ThemeProvider } from '@mui/material';
 
 export const metadata: Metadata = {
   title: { absolute: "Cshop", template: "%s | a marketplace or an ecommerce" },
@@ -29,16 +27,14 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
 
-  let initialData = await getInitialDataAPI() ?? {};
-
   return (
     <html lang="en" >
       <body>
         <AuthProvider>
           <AppProvider>
             <React.Suspense fallback={<HomeFallback />}>
-                <NavBar categoryData={initialData?.categoryData} />
-                {children}
+              <NavBar />
+              {children}
               <BottomNavigation />
               <BottomNavbar />
             </React.Suspense>

@@ -7,10 +7,11 @@ export const ActionTypes = {
   GET_MESSAGES: 'GET_MESSAGES',
   GET_NOTIFICATIONS: 'GET_NOTIFICATIONS',
   GET_FAVOURITES: "GET_FAVOURITES",
-  POST_FAVOURITE: "POST_FAVOURITE"
+  POST_FAVOURITE: "POST_FAVOURITE",
+  GET_INITIAL_DATA: "GET_INITIAL_DATA"
 };
 
-export const getCarts = (cartsData: any) => ({ 
+export const getCarts = (cartsData: any) => ({
   type: ActionTypes.GET_CARTS,
   payload: cartsData,
 });
@@ -51,4 +52,10 @@ export const getMessages = (messagesData: any) => ({
 export const getNotifications = (notificationsData: any) => ({
   type: ActionTypes.GET_NOTIFICATIONS,
   payload: notificationsData,
+});
+
+
+export const getInitialData = (initialData: any) => ({
+  type: ActionTypes.GET_INITIAL_DATA,
+  payload: initialData,
 });

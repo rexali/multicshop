@@ -1,5 +1,5 @@
 
-import React, { Fragment } from 'react';
+import React, { Fragment, useCallback } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import MarketingMessage from './MarketingMessage';
 import FAQHowItWorks from './FAQHowItWorks';
@@ -24,14 +24,31 @@ import { Toaster } from 'sonner';
 import SearchProduct from '../components/SearchProduct';
 import { SidebarProductCategories } from './products/SidebarProductCategories';
 import { getInitialDataAPI } from './api/getInitialDataAPI';
+import { AppContext } from '../context/AppContext';
+import { getInitialData } from '../store/actions/app-actions';
 
-export default async function AppPage({ params }: { params: Promise<{ subdomain?: string }> }) {
+export default function AppPage(props: any) {
 
-  let data: any = {};
-  try {
-    const paramsValue = await params;
-    data = await getInitialDataAPI(paramsValue.subdomain);
-  } catch (error: any) {
+  const subdomain = props.subdomain ?? "maindomain"
+  const [data, setData] = React.useState<any>({});
+  const [error, setError] = React.useState<any>({});
+  const { dispatch } = React.useContext(AppContext)
+
+  const getData = useCallback(async () => {
+    try {
+      let data = await getInitialDataAPI(subdomain);
+      dispatch(getInitialData(data))
+      setData(data);
+    } catch (error) {
+      setError(error)
+    }
+  }, [subdomain])
+
+  React.useEffect(() => {
+    getData();
+  })
+
+  if (error) {
     return <Fallback item={`Error! ${error.message}`} />
   }
 
