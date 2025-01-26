@@ -19,7 +19,6 @@ import FeaturedProductList from './products/FeaturedProductList';
 import PopularProductList from './products/PopularProductList';
 import NewProductList from './products/NewProductList';
 import RecommendedProductList from './products/RecommendedProductList';
-import Fallback from '../components/common/fallback';
 import { Grid } from '@mui/material';
 import { Toaster } from 'sonner';
 import SearchProduct from '../components/SearchProduct';
@@ -27,6 +26,7 @@ import { SidebarProductCategories } from './products/SidebarProductCategories';
 import { getInitialDataAPI } from './api/getInitialDataAPI';
 import { AppContext } from '../context/AppContext';
 import { getInitialData } from '../store/actions/app-actions';
+import HomeFallback from '../components/common/HomeFallback';
 
 export default function AppPage(props: any) {
 
@@ -49,7 +49,7 @@ export default function AppPage(props: any) {
   })
 
   if (!Object.keys(data).length) {
-    return <Fallback item={`Error!`} />
+    return <HomeFallback />
   }
 
   return (
