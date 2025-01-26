@@ -26,8 +26,8 @@ export default function ProductsPage(props: any) {
 
   const getProductsData = React.useCallback(async () => {
     try {
-      let products = await getProductsAPI(activePage);
-      let categories = await getCategoriesAPI(activePage);
+      let products = await getProductsAPI(activePage, props.subdomain ?? "maindomain");
+      let categories = await getCategoriesAPI(activePage, props.subdomain ?? "maindomain");
       dispatch(getProducts(products));
       setCategoryData(categories);
       setProducts(products);

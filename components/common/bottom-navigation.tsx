@@ -15,15 +15,15 @@ export default function BottomNavigation() {
         "Contact",
         "News",
         "Site map",
-        "Privacy policy",
-        "Terms and Conditions"
+        "Privacy",
+        "Terms"
     ];
 
-    const renderGridItems = pages.map((page, index) => (<Grid item xs={4} md={4} sx={{ textAlign: "center" }} key={index}>
+    const renderGridItems = pages.map((page, index) => (<Grid item xs={4} md={4} sx={{ textAlign: "left" }} key={index}>
         <Link
             type="button"
             color="success"
-            href={`${page === "Waqf" ? "/waqfs" : page === "Home" ? "/" : page === "Privacy policy" ? "/privacy" : page === 'Site map' ? "/sitemap" : page === "Terms and Conditions" ? "/terms" : "/" + page.toLocaleLowerCase()}`}
+            href={`${page === "Waqf" ? "/waqfs" : page === "Home" ? "/" : page === "Privacy" ? "/privacy" : page === 'Site map' ? "/sitemap" : page === "Terms" ? "/terms" : "/" + page.toLocaleLowerCase()}`}
         >
             {page}
         </Link>
