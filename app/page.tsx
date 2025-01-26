@@ -32,7 +32,6 @@ export default function AppPage(props: any) {
 
   const subdomain = props.subdomain ?? "maindomain"
   const [data, setData] = useState<any>({});
-  const [error, setError] = useState<any>({});
   const { dispatch } = useContext(AppContext)
 
   const getData = useCallback(async () => {
@@ -41,7 +40,7 @@ export default function AppPage(props: any) {
       dispatch(getInitialData(data))
       setData(data);
     } catch (error) {
-      setError(error)
+      console.log(error)
     }
   }, [subdomain])
 
@@ -49,8 +48,8 @@ export default function AppPage(props: any) {
     getData();
   })
 
-  if (error) {
-    return <Fallback item={`Error! ${error.message}`} />
+  if (!Object.keys(data).length) {
+    return <Fallback item={`Error!`} />
   }
 
   return (
