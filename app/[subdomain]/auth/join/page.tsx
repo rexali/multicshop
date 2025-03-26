@@ -8,7 +8,9 @@ import SubSignUpPage from "../signup/page";
 
 export default async function JoinPage(props: any) {
     const subdomain: string = props?.subdomain ?? ""
+    
     let [tabName, setTabName] = useState('signin');
+
     const openTab = (tabname: any) => {
         setTabName(tabname);
     }
